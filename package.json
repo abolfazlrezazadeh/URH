@@ -1,0 +1,27 @@
+{
+  "name": "urh",
+  "version": "1.0.0",
+  "description": "URH Transportation App",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node start.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "auto-bind": "^4.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
+    "hpp": "^0.2.3",
+    "http-errors": "^2.0.0",
+    "mongoose": "^6.11.4",
+    "morgan": "^1.10.0",
+    "xss-clean": "^0.1.4"
+  }
+}
