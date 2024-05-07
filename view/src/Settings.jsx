@@ -26,7 +26,10 @@ export default function Settings() {
         className={`m-auto mt-5 flex w-4/5 cursor-pointer flex-row items-center justify-between gap-3 rounded-full border-b-2 border-gray-800 bg-slate-50 px-3 py-2 font-bold`}
       >
         <p>زبان</p>
-        <button>En/Fa</button>
+        <select name="" id="">
+          <option value="Farsi">Farsi</option>
+          <option value="English">English</option>
+        </select>
       </div>
     </div>
   );
