@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .otln {
+    outline: 1px solid red;
+  }
+}
+body{
+  font-family: sans-serif;
+}

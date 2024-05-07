@@ -1,0 +1,9 @@
+npm i react-icons
+npm i react-verification-input
+npm i react-router-dom
+
+
+// tailwind
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm i tailwind-merge
