@@ -19,7 +19,7 @@ export default function Confirm() {
         <VerificationInput
           validChars="0-9"
           length={5}
-          placeholder="  "
+          placeholder=" "
           classNames={{
             container: "container",
             character: "character",

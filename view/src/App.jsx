@@ -20,6 +20,7 @@ function App() {
           <Route path="settings" element={<Settings />} />
           <Route path="userprofile" element={<UserProfile />} />
           <Route path="support" element={<Support />} />
+          <Route path="*" element={<h1>page not found</h1> } />
         </Routes>
       </BrowserRouter>
     </>

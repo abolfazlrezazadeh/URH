@@ -1,11 +1,17 @@
-import { BiSupport } from "react-icons/bi"; 
-import { FiHelpCircle } from "react-icons/fi";
-import { AiOutlineSetting } from "react-icons/ai";
-import { FaUserFriends } from "react-icons/fa";
-import { GoLocation } from "react-icons/go";
-import { CiRoute } from "react-icons/ci";
-import InfoCard from "./InfoCard";
+import { BiSupport } from "react-icons/bi"
+import { FiHelpCircle } from "react-icons/fi"
+import { AiOutlineSetting } from "react-icons/ai"
+import { FaUserFriends } from "react-icons/fa"
+import { GoLocation } from "react-icons/go"
+import { CiRoute } from "react-icons/ci"
+
+import InfoCard from "./InfoCard"
+
+import { useNavigate } from "react-router-dom"
+
 export default function Information() {
+  const navigate = useNavigate()
+
   return (
     <>
       <div className="mt-10 flex flex-row items-center justify-evenly">
@@ -32,10 +38,10 @@ export default function Information() {
         <InfoCard icon={<CiRoute />} text="مسیر های منتخب" />
         <InfoCard icon={<GoLocation />} text="مکان های منتخب" />
         <InfoCard icon={<FaUserFriends />} text="دعوت دوستان" />
-        <InfoCard icon={<AiOutlineSetting />} text="تنظیمات" />
-        <InfoCard icon={<BiSupport />} text='پشتیبانی' />
+        <InfoCard icon={<AiOutlineSetting />} text="تنظیمات" onClick={() => navigate('settings')} />
+        <InfoCard icon={<BiSupport />} text="پشتیبانی" />
         <InfoCard icon={<FiHelpCircle />} text="راهنما" />
       </div>
     </>
-  );
+  )
 }
