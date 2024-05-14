@@ -6,7 +6,7 @@ export default function GoBackBtn() {
 
   return (
     <div
-      className="absolute left-4 top-4 cursor-pointer rounded-sm bg-gray-200 p-1 text-2xl"
+      className="absolute left-4 top-4 cursor-pointer rounded-sm p-1 text-2xl"
       onClick={() => navigate(-1)}
     >
       <IoIosArrowBack />

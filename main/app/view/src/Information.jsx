@@ -39,8 +39,16 @@ export default function Information() {
       <div className="pr-5">
         <InfoCard icon={<CiRoute />} text="مسیر های منتخب" />
         <InfoCard icon={<GoLocation />} text="مکان های منتخب" />
-        <InfoCard icon={<FaUserFriends />} text="دعوت دوستان" />
-        <InfoCard icon={<AiOutlineSetting />} text="تنظیمات" onClick={() => navigate('settings')} />
+        <InfoCard
+          icon={<FaUserFriends />}
+          text="دعوت دوستان"
+          onClick={() => navigate("/invite")}
+        />
+        <InfoCard
+          icon={<AiOutlineSetting />}
+          text="تنظیمات"
+          onClick={() => navigate("/settings")}
+        />
         <InfoCard icon={<BiSupport />} text="پشتیبانی" />
         <InfoCard icon={<FiHelpCircle />} text="راهنما" />
       </div>
