@@ -8,6 +8,13 @@ const routeSchema = new mongoose.Schema({
     },
   ],
 });
+const placeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  coordinates: {
+    latitude: { type: Number, required: true },
+    longitude: { type: Number, required: true },
+  },
+});
 
 const userSchema = new mongoose.Schema(
   {
@@ -26,6 +33,7 @@ const userSchema = new mongoose.Schema(
     cardNumber: { type: String },
     role: { type: String, default: "USER" },
     favoriteRoutes: [routeSchema], // Embed the RouteSchema for favorite routes
+    favoritePlaces: [placeSchema], // Embed the PlaceSchema for favorite places
   },
   {
     timestamps: true,
