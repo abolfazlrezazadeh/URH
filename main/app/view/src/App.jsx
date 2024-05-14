@@ -7,6 +7,7 @@ import Support from './Support'
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Confirm from "./Confirm";
+import GoBackBtn from "./GoBackBtn";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="settings" element={<Settings />} />
           <Route path="userprofile" element={<UserProfile />} />
           <Route path="support" element={<Support />} />
-          <Route path="*" element={<h1>page not found</h1> } />
+          <Route path="*" element={<GoBackBtn /> } />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,8 +1,10 @@
 import Card from "./Card";
+import GoBackBtn from "./GoBackBtn";
 
 export default function UserProfile() {
   return (
     <div>
+      <GoBackBtn />
       <img src="/assets/user.png" className="border border-cyan-500 w-4/5 m-auto mt-5 rounded-full" alt="logo" />
       <Card value='پوریا موریا' />
       <Card value='09318348635' />

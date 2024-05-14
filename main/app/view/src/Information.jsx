@@ -8,12 +8,14 @@ import { CiRoute } from "react-icons/ci"
 import InfoCard from "./InfoCard"
 
 import { useNavigate } from "react-router-dom"
+import GoBackBtn from "./GoBackBtn"
 
 export default function Information() {
   const navigate = useNavigate()
 
   return (
     <>
+      <GoBackBtn />
       <div className="mt-10 flex flex-row items-center justify-evenly">
         <img src="/assets/user.png" alt="user" className="w-1/4" />
         <div className="space-y-6 text-center text-xl font-bold tracking-wider">
