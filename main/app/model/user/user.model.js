@@ -21,7 +21,7 @@ const walletSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema(
   {
-    phone: { type: String, required: true },
+    phone: { type: String, required: true, unique: true },
     first_name: { type: String },
     last_name: { type: String },
     email: { type: String },
@@ -50,5 +50,5 @@ const userSchema = new mongoose.Schema(
 
 module.exports = {
   // Export the User model and create a model based on the userSchema
-  UserModel: mongoose.model(userSchema, "user"),
+  userModel: mongoose.model(userSchema, "user"),
 };
