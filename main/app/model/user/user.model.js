@@ -15,6 +15,9 @@ const placeSchema = new mongoose.Schema({
     longitude: { type: Number, required: true },
   },
 });
+const walletSchema = new mongoose.Schema({
+  balance: { type: Number, default: 0 },
+});
 
 const userSchema = new mongoose.Schema(
   {
@@ -34,6 +37,7 @@ const userSchema = new mongoose.Schema(
     role: { type: String, default: "USER" },
     favoriteRoutes: [routeSchema], // Embed the RouteSchema for favorite routes
     favoritePlaces: [placeSchema], // Embed the PlaceSchema for favorite places
+    wallet: walletSchema, // Include the WalletSchema for the wallet field
   },
   {
     timestamps: true,
