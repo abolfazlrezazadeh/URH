@@ -8,12 +8,14 @@ import { CiRoute } from "react-icons/ci"
 import InfoCard from "./InfoCard"
 
 import { useNavigate } from "react-router-dom"
+import GoBackBtn from "./GoBackBtn"
 
 export default function Information() {
   const navigate = useNavigate()
 
   return (
     <>
+      <GoBackBtn />
       <div className="mt-10 flex flex-row items-center justify-evenly">
         <img src="/assets/user.png" alt="user" className="w-1/4" />
         <div className="space-y-6 text-center text-xl font-bold tracking-wider">
@@ -37,8 +39,16 @@ export default function Information() {
       <div className="pr-5">
         <InfoCard icon={<CiRoute />} text="مسیر های منتخب" />
         <InfoCard icon={<GoLocation />} text="مکان های منتخب" />
-        <InfoCard icon={<FaUserFriends />} text="دعوت دوستان" />
-        <InfoCard icon={<AiOutlineSetting />} text="تنظیمات" onClick={() => navigate('settings')} />
+        <InfoCard
+          icon={<FaUserFriends />}
+          text="دعوت دوستان"
+          onClick={() => navigate("/invite")}
+        />
+        <InfoCard
+          icon={<AiOutlineSetting />}
+          text="تنظیمات"
+          onClick={() => navigate("/settings")}
+        />
         <InfoCard icon={<BiSupport />} text="پشتیبانی" />
         <InfoCard icon={<FiHelpCircle />} text="راهنما" />
       </div>

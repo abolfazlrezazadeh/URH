@@ -2,9 +2,11 @@ import { BiMapAlt } from "react-icons/bi";
 import { BiSupport } from "react-icons/bi"; 
 import { BiTimer } from "react-icons/bi"; 
 import { BiBus } from "react-icons/bi"
+import GoBackBtn from "./GoBackBtn";
 export default function Support() {
   return (
     <div>
+      <GoBackBtn />
       <h1 className="mr-8 mt-24 text-3xl font-extrabold">
         با چه مشکلی برخورد کرداید
       </h1>

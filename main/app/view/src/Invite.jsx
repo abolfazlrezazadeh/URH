@@ -1,6 +1,9 @@
+import GoBackBtn from "./GoBackBtn";
+
 export default function Invite() {
   return (
     <div className="flex-center h-screen flex-col gap-y-4 bg-[#5F5D9C]">
+      <GoBackBtn />
       <img
         src="/assets/invite-bg.jpg"
         className="aspect-square w-3/4 rounded-full object-cover"
