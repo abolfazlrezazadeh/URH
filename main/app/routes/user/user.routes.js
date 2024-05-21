@@ -3,6 +3,7 @@ const { userAuthController } = require("../../http/controller/user/auth/auth.con
 const router = require("express").Router();
 
 router.post("/get-otp", userAuthController.getOtp);
+router.post("/check-otp", userAuthController.checkOtp);
 
 module.exports = {
   userRoutes: router,
