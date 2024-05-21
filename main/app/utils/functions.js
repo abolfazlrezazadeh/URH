@@ -6,10 +6,10 @@ const { ACCESS_TOKEN_SECRET_KEY } = require("./constatnts");
 function randomNumberGenerator() {
   return Math.floor(Math.random() * 90000);
 }
-async function signAccessToken(userId, phone) {
+async function signAccessToken(userId) {
   return new Promise(async (resolve, reject) => {
     const payload = {
-      phone: phone,
+      userId
     };
     const options = {
       // 10 days

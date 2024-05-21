@@ -42,7 +42,7 @@ class authController extends controller {
         throw createHttpError.Unauthorized("کد اعتبار سنجی صحیح نمی باشد");
       const now = Date.now();
       if(+user.otp.expiresIn < now) throw createHttpError.Unauthorized("کد اعتبار سنجی منقضی شده است")
-      const accessToken = await signAccessToken(user._id, user.phone)
+      const accessToken = await signAccessToken(user._id)
     return res.status(httpStatus.OK).json({
       statusCode : httpStatus.OK,
       data : {
