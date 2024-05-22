@@ -4,11 +4,9 @@ const { ACCESS_TOKEN_SECRET_KEY } = require("../../utils/constatnts");
 const { userModel } = require("../../model/user/user.model");
 
 function getToken(headers) {
-  const [Bearer, token] = headers?.["access-token"]?.split(" ") || [];
+  const [Bearer, token] = headers?.authorization?.split(" ") || [];
   if (token && ["Bearer", "bearer"].includes(Bearer)) return token;
-  throw createError.Unauthorized(
-    "لطفا وارد حساب کاربری خود شوید"
-  );
+      throw createError.Unauthorized("لطفا وارد حساب کاربری خود شوید");
 }
 
 async function verifyAccessTokken(req, res, next) {
@@ -19,7 +17,7 @@ async function verifyAccessTokken(req, res, next) {
         if (err)
           throw createError.Unauthorized("لطفا وارد حساب کاربری خود شوید");
         const { userId } = payload || {};
-        const user = userModel.findById({ _id: userId }, { otp: 0 });
+        const user = userModel.findOne({ _id: userId }, { phone: 0 });
         if (!user) throw createError.Unauthorized("حساب کاربری یافت نشد");
         req.user = user;
         return next();
@@ -32,6 +30,6 @@ async function verifyAccessTokken(req, res, next) {
   }
 }
 
-module.exports={
-    verifyAccessTokken
-}
+module.exports = {
+  verifyAccessTokken,
+};

@@ -4,7 +4,12 @@ const {
   getOtpSchema,
   checkOtpSchema,
 } = require("../../../validator/user/user.validator");
-const { randomNumberGenerator, signAccessToken } = require("../../../../utils/functions");
+const {
+  randomNumberGenerator,
+  signAccessToken,
+  signRefreshToken,
+  verifyRefreshToken,
+} = require("../../../../utils/functions");
 const { userModel } = require("../../../../model/user/user.model");
 const createHttpError = require("http-errors");
 
@@ -41,14 +46,35 @@ class authController extends controller {
       if (user.otp.code != code)
         throw createHttpError.Unauthorized("کد اعتبار سنجی صحیح نمی باشد");
       const now = Date.now();
-      if(+user.otp.expiresIn < now) throw createHttpError.Unauthorized("کد اعتبار سنجی منقضی شده است")
-      const accessToken = await signAccessToken(user._id)
-    return res.status(httpStatus.OK).json({
-      statusCode : httpStatus.OK,
-      data : {
-        accessToken
-      }
-    })
+      if (+user.otp.expiresIn < now)
+        throw createHttpError.Unauthorized("کد اعتبار سنجی منقضی شده است");
+      const accessToken = await signAccessToken(user._id);
+      const refreshToken = await signRefreshToken(user._id);
+      return res.status(httpStatus.OK).json({
+        statusCode: httpStatus.OK,
+        data: {
+          accessToken,
+          refreshToken,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  async refreshToken(req, res, next) {
+    try {
+      const { refreshToken } = req.body;
+      const userId = await verifyRefreshToken(refreshToken);
+      const user = await userModel.findOne({ _id: userId }, { phone: 0 });
+      const accessToken = await signAccessToken(user._id);
+      const newRefreshToken = await signRefreshToken(user._id);
+      return res.status(httpStatus.OK).json({
+        statusCode: httpStatus.OK,
+        data: {
+          accessToken,
+          refreshToken: newRefreshToken,
+        },
+      });
     } catch (error) {
       next(error);
     }

@@ -5,8 +5,8 @@ const {userRoutes} = require("./user/user.routes")
 const router = require("express").Router()
 
 
-router.use('/' ,verifyAccessTokken, homeRouter)
 router.use('/user' , userRoutes)
+router.use('/' ,verifyAccessTokken, homeRouter)
 
 
 module.exports = {
