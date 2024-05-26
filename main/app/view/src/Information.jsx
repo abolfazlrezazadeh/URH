@@ -49,7 +49,7 @@ export default function Information() {
           text="تنظیمات"
           onClick={() => navigate("/settings")}
         />
-        <InfoCard icon={<BiSupport />} text="پشتیبانی" />
+        <InfoCard icon={<BiSupport />} text="پشتیبانی" onClick={() => navigate('/support')} />
         <InfoCard icon={<FiHelpCircle />} text="راهنما" />
       </div>
     </>
