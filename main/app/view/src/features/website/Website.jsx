@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import Nav from "./Nav"
+import ImageSection from "./ImageSection"
 
 export default function Website() {
   return (
@@ -23,9 +24,9 @@ export default function Website() {
           حمل و نقل شهر تو دستته!
         </h4>
       </section>
-      <section className="mt-3 bg-gray-100 py-3">
+      <ImageSection>
         <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
-      </section>
+      </ImageSection>
       <section className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">مسیریابی</h4>
         <p className="my-4 mr-5 text-balance">
@@ -34,9 +35,9 @@ export default function Website() {
           با کارایی بالا، به مقصد خود برسند و سفری راحت و آسان را تجربه کنند.
         </p>
       </section>
-      <section className="mt-3 bg-gray-100 py-3">
+      <ImageSection>
         <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
-      </section>
+      </ImageSection>
       <section className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">صرفه جویی در زمان</h4>
         <p className="my-4 mr-5 text-balance">
@@ -45,9 +46,9 @@ export default function Website() {
           بالا، به مقصد خود برسند و تجربه سفری راحت و آسان را تجربه کنند.
         </p>
       </section>
-      <section className="mt-3 bg-gray-100 py-3">
+      <ImageSection>
         <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
-      </section>
+      </ImageSection>
       <section className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">پرداخت هوشمند</h4>
         <p className="my-4 mr-5 text-balance">

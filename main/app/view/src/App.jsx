@@ -9,12 +9,14 @@ import Confirm from "./Confirm"
 import GoBackBtn from "./GoBackBtn"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Website from "./features/website/Website"
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="website" element={<Website />} />
           <Route path="/" element={<SignUp />} />
           <Route path="confirm" element={<Confirm />} />
           <Route path="information" element={<Information />} />
