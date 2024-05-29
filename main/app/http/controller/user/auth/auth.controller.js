@@ -1,7 +1,15 @@
 const { StatusCodes: httpStatus } = require("http-status-codes");
 const controller = require("../../main.controller");
-const { getOtpSchema } = require("../../../validator/user/user.validator");
-const { randomNumberGenerator } = require("../../../../utils/functions");
+const {
+  getOtpSchema,
+  checkOtpSchema,
+} = require("../../../validator/user/user.validator");
+const {
+  randomNumberGenerator,
+  signAccessToken,
+  signRefreshToken,
+  verifyRefreshToken,
+} = require("../../../../utils/functions");
 const { userModel } = require("../../../../model/user/user.model");
 const createHttpError = require("http-errors");
 
@@ -20,9 +28,51 @@ class authController extends controller {
       return res.status(httpStatus.OK).json({
         statusCode: httpStatus.OK,
         data: {
-          message: "پیام با موفقیت ارسال شد",
+          message: "کد اعتبار سنجی با موفقیت ارسال شد",
           code,
           phone,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  async checkOtp(req, res, next) {
+    try {
+      await checkOtpSchema.validateAsync(req.body);
+      const { phone, code } = req.body;
+      const user = await userModel.findOne({ phone });
+      if (!user) throw createHttpError.NotFound("کاربری یافت نشد");
+      if (user.otp.code != code)
+        throw createHttpError.Unauthorized("کد اعتبار سنجی صحیح نمی باشد");
+      const now = Date.now();
+      if (+user.otp.expiresIn < now)
+        throw createHttpError.Unauthorized("کد اعتبار سنجی منقضی شده است");
+      const accessToken = await signAccessToken(user._id);
+      const refreshToken = await signRefreshToken(user._id);
+      return res.status(httpStatus.OK).json({
+        statusCode: httpStatus.OK,
+        data: {
+          accessToken,
+          refreshToken,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  async refreshToken(req, res, next) {
+    try {
+      const { refreshToken } = req.body;
+      const userId = await verifyRefreshToken(refreshToken);
+      const user = await userModel.findOne({ _id: userId }, { phone: 0 });
+      const accessToken = await signAccessToken(user._id);
+      const newRefreshToken = await signRefreshToken(user._id);
+      return res.status(httpStatus.OK).json({
+        statusCode: httpStatus.OK,
+        data: {
+          accessToken,
+          refreshToken: newRefreshToken,
         },
       });
     } catch (error) {
@@ -36,7 +86,7 @@ class authController extends controller {
       expiresIn: new Date().getTime() + 120_000,
     };
     const result = await this.checkExistUser(phone);
-    if (result) return (await this.updateUser(phone, { otp }));
+    if (result) return await this.updateUser(phone, { otp });
     return !!(await userModel.create({
       phone,
       otp,
@@ -63,7 +113,6 @@ class authController extends controller {
   }
 }
 
-
 module.exports = {
-    userAuthController : new authController()
-}
+  userAuthController: new authController(),
+};
