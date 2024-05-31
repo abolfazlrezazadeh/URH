@@ -1,24 +1,26 @@
 // ? pages
-import Information from "./Information"
-import Invite from "./Invite"
-import Settings from "./Settings"
-import UserProfile from "./UserProfile"
-import SignUp from "./SignUp"
-import Support from "./Support"
+import Information from "./pages/Information"
+import Invite from "./pages/Invite"
+import Settings from "./pages/Settings"
+import UserProfile from "./pages/UserProfile"
+import SignUp from "./pages/SignUp"
+import Support from "./pages/Support"
 import Confirm from "./Confirm"
-import GoBackBtn from "./GoBackBtn"
+import GoBackBtn from "./components/GoBackBtn"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Website from "./features/website/Website"
+import Website from "./pages/Website"
+import Bus from "./pages/Bus"
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="website" element={<Website />} />
           <Route path="/" element={<SignUp />} />
+          <Route path="website" element={<Website />} />
           <Route path="confirm" element={<Confirm />} />
+          <Route path="bus" element={<Bus />} />
           <Route path="information" element={<Information />} />
           <Route path="invite" element={<Invite />} />
           <Route path="settings" element={<Settings />} />

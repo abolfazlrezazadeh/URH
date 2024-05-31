@@ -5,10 +5,10 @@ import { FaUserFriends } from "react-icons/fa"
 import { GoLocation } from "react-icons/go"
 import { CiRoute } from "react-icons/ci"
 
-import InfoCard from "./InfoCard"
+import InfoCard from "../components/InfoCard"
 
 import { useNavigate } from "react-router-dom"
-import GoBackBtn from "./GoBackBtn"
+import GoBackBtn from "../components/GoBackBtn"
 
 export default function Information() {
   const navigate = useNavigate()
@@ -49,7 +49,11 @@ export default function Information() {
           text="تنظیمات"
           onClick={() => navigate("/settings")}
         />
-        <InfoCard icon={<BiSupport />} text="پشتیبانی" onClick={() => navigate('/support')} />
+        <InfoCard
+          icon={<BiSupport />}
+          text="پشتیبانی"
+          onClick={() => navigate("/support")}
+        />
         <InfoCard icon={<FiHelpCircle />} text="راهنما" />
       </div>
     </>

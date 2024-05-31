@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
-import Nav from "./Nav"
-import ImageSection from "./ImageSection"
+import Nav from "../features/website/Nav"
+import ImageSection from "../features/website/ImageSection"
+import TextArea from "../features/website/TextArea"
 
 export default function Website() {
   return (
@@ -27,36 +28,36 @@ export default function Website() {
       <ImageSection>
         <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
       </ImageSection>
-      <section className="bg-white p-2">
+      <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">مسیریابی</h4>
         <p className="my-4 mr-5 text-balance">
           دارای قابلیت پیش‌بینی ترافیک و تاخیرات، اطلاعات، اطلاعات دقیق درباره
           خطوط حمل و نقل و نقشه های زنده مسیر است. کاربران می‌توانند به سرعت و
           با کارایی بالا، به مقصد خود برسند و سفری راحت و آسان را تجربه کنند.
         </p>
-      </section>
+      </TextArea>
       <ImageSection>
         <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
       </ImageSection>
-      <section className="bg-white p-2">
+      <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">صرفه جویی در زمان</h4>
         <p className="my-4 mr-5 text-balance">
           دارای قابلیت پیش‌بینی ترافیک و تاخیرات، اطلاعات دقیق درباره خطوط حمل و
           نقل و نقشه‌های زنده مسیر است. ، کاربران می‌توانند به سرعت و با کارایی
           بالا، به مقصد خود برسند و تجربه سفری راحت و آسان را تجربه کنند.
         </p>
-      </section>
+      </TextArea>
       <ImageSection>
         <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
       </ImageSection>
-      <section className="bg-white p-2">
+      <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">پرداخت هوشمند</h4>
         <p className="my-4 mr-5 text-balance">
           پرداخت با گوشی هوشمند و کارت‌های هوشمند، به شهروندان این امکان را
           می‌دهد که به سرعت و با راحتی، هزینه‌های سفر خود را پرداخت کنند و از
           تجربه سفری آسان و مطمئن لذت ببرند.
         </p>
-      </section>
+      </TextArea>
     </div>
   )
 }
