@@ -1,16 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export const sendOtp = createAsyncThunk('user/senOtp', async (userNum) => {
+    const userNumAsObj = {phone: userNum}
+    // console.log(userNumAsObj, JSON.stringify(userNumAsObj))
         const response = await fetch('https://urh.liara.run/user/get-otp', {
             method: 'POST',
+            body: JSON.stringify(userNumAsObj),
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                userNum
-            })
         })
-        return response.json()
+        const data = await response.json()
+        console.log(data)
 })
 
 export const initialState = {
