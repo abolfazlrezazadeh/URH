@@ -1,28 +1,45 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { apiSlice } from "../api/apiSlice";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+export const sendOtp = createAsyncThunk('user/senOtp', async (userNum) => {
+        const response = await fetch('https://urh.liara.run/user/get-otp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userNum
+            })
+        })
+        return response.json()
+})
+
+export const initialState = {
     haveSms: false,
     user: {
-        phoneNumber: null,
-        smsCode: null,
-        jwtToken: null,
+        phoneNumber: 'not-set',
+        smsCode: 'not-set',
+        jwtToken: 'not-set',
     },
     failLogin: false,
+    senSmsLoading: false,
 }
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {
-        
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(sendOtp.pending,   (state, action) => {
+            state.senSmsLoading = true
+        })
+        builder.addCase(sendOtp.fulfilled, (state, action) => {
+            state.haveSms = true
+        })
+        builder.addCase(sendOtp.rejected,  (state, action) => {
+            state.failLogin = true
+        })
     }
 })
 
-export const extendedApiSlice = apiSlice.injectEndpoints({
-    endpoints: builder => ({
-        
-    })
-})
-
-export default userSlice
+export const { reducer } = userSlice
+export default userSlice.reducer
