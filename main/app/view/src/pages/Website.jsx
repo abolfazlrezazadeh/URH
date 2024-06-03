@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Nav from "../features/website/Nav"
 import ImageSection from "../features/website/ImageSection"
 import TextArea from "../features/website/TextArea"
+import Slider from "../features/website/Slider"
 
 export default function Website() {
   return (
@@ -58,6 +59,7 @@ export default function Website() {
           تجربه سفری آسان و مطمئن لذت ببرند.
         </p>
       </TextArea>
+      <Slider />
     </div>
   )
 }
