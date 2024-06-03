@@ -9,8 +9,7 @@ export default function Nav({ sidebarSetter }) {
     <nav className="relative bg-white p-2 z-10 flex flex-wrap items-center justify-between flex-row-reverse">
       {/* Logo */}
       <a href="" className="">
-        {/* <NikeLogo className="h-20 w-20 dark:fill-white" /> */}
-        LOGO
+        <img src="/assets/logo.png" alt="logo" className="aspect-square w-16" />
       </a>
 
       {/* Burger button */}

@@ -26,7 +26,7 @@ export default function Website() {
         </h4>
       </section>
       <ImageSection>
-        <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
+        <img src="/assets/map.png" alt="aks" className="mx-auto block" />
       </ImageSection>
       <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">مسیریابی</h4>
@@ -37,7 +37,7 @@ export default function Website() {
         </p>
       </TextArea>
       <ImageSection>
-        <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
+        <img src="/assets/hand.png" alt="aks" className="mx-auto block" />
       </ImageSection>
       <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">صرفه جویی در زمان</h4>
@@ -48,7 +48,7 @@ export default function Website() {
         </p>
       </TextArea>
       <ImageSection>
-        <img src="/assets/images.jpg" alt="aks" className="mx-auto block" />
+        <img src="/assets/phone.png" alt="aks" className="mx-auto block" />
       </ImageSection>
       <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">پرداخت هوشمند</h4>
