@@ -14,8 +14,7 @@ export default function Slider() {
   }
 
   return (
-    <div>
-      <div>
+    <div className="my-5">
         <img
           src={images.find((image) => image.id === activeImg).src}
           alt={images.find((image) => image.id === activeImg).alt}
@@ -34,7 +33,6 @@ export default function Slider() {
             </label>
           ))}
         </div>
-      </div>
     </div>
   )
 }

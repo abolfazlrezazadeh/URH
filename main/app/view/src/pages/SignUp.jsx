@@ -1,11 +1,17 @@
 import { useDispatch, useSelector } from "react-redux"
 import VerificationInput from "react-verification-input"
-import { sendOtp, updatePhoneNumber } from "../features/user/userSlice"
+import {
+  sendOtp,
+  checkOtp,
+  updatePhoneNumber,
+  updateUserSms,
+} from "../features/user/userSlice"
 
 export default function SignUp() {
   const dispatch = useDispatch()
   const haveSms = useSelector((store) => store.user.haveSms)
   const phoneNumber = useSelector((store) => store.user.user.phoneNumber)
+  const smsCode = useSelector((store) => store.user.user.smsCode)
 
   const handlePhoneNumberChange = (e) => {
     let value = e.target.value
@@ -18,7 +24,17 @@ export default function SignUp() {
   function handleSubmit(e) {
     e.preventDefault()
     if (phoneNumber.length !== 11) return
-    dispatch(sendOtp(phoneNumber))
+    const userNumAsObj = { phone: phoneNumber }
+    dispatch(sendOtp(userNumAsObj))
+  }
+
+  function checkOtpHandler(e) {
+    const userInfoToCheck = {
+      phone: phoneNumber,
+      code: e
+    }
+    console.log(userInfoToCheck)
+    dispatch(checkOtp(userInfoToCheck))
   }
 
   if (haveSms) {
@@ -38,6 +54,9 @@ export default function SignUp() {
         </p>
         <div dir="ltr" className="flex-center m-auto my-8 w-4/5">
           <VerificationInput
+            inputProps={{ autoComplete: "one-time-code" }}
+            autoFocus={true}
+            onComplete={(e) => checkOtpHandler(e)}
             validChars="0-9"
             length={5}
             placeholder=" "

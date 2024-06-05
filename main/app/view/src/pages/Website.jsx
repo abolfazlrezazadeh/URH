@@ -59,7 +59,10 @@ export default function Website() {
           تجربه سفری آسان و مطمئن لذت ببرند.
         </p>
       </TextArea>
-      <Slider />
+      <ImageSection>
+        <Slider />
+        <img src="assets/app.png" alt="" className="blocl mx-auto mb-5" />
+      </ImageSection>
     </div>
   )
 }
