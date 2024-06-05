@@ -14,7 +14,6 @@ export const sendOtp = createAsyncThunk('user/senOtp', async (userNum) => {
 })
 
 export const checkOtp = createAsyncThunk('user/checkOtp', async (phoneAndCode) => {
-    // console.log(phoneAndCode)
     const response = await fetch('https://urh.liara.run/user/check-otp', {
         method: 'POST',
         body: JSON.stringify(phoneAndCode),
@@ -23,7 +22,7 @@ export const checkOtp = createAsyncThunk('user/checkOtp', async (phoneAndCode) =
         },
     })
     const data = await response.json()
-    console.log(data)
+    console.log(data.data)
 })
 
 export const initialState = {

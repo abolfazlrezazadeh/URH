@@ -11,7 +11,7 @@ export default function SignUp() {
   const dispatch = useDispatch()
   const haveSms = useSelector((store) => store.user.haveSms)
   const phoneNumber = useSelector((store) => store.user.user.phoneNumber)
-  const smsCode = useSelector((store) => store.user.user.smsCode)
+  const smsSendingLoading = useSelector((store) => store.user.smsSendingLoading)
 
   const handlePhoneNumberChange = (e) => {
     let value = e.target.value
@@ -96,7 +96,8 @@ export default function SignUp() {
         </p>
         <button
           type="submit"
-          className="m-auto mt-5 block rounded-full bg-[#00FFC1] px-10 py-3"
+          disabled={smsSendingLoading}
+          className="m-auto mt-5 block rounded-full bg-[#00FFC1] px-10 py-3 disabled:cursor-not-allowed disabled:opacity-60"
         >
           دریافت کد
         </button>
