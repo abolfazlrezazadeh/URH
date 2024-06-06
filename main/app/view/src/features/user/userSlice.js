@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export const sendOtp = createAsyncThunk('user/senOtp', async (userNum) => {
-    console.log('inside sendOtp')
+    // console.log('inside sendOtp')
     const response = await fetch('https://urh.liara.run/user/get-otp', {
         method: 'POST',
         body: JSON.stringify(userNum),
@@ -23,18 +23,21 @@ export const checkOtp = createAsyncThunk('user/checkOtp', async (phoneAndCode) =
     })
     const data = await response.json()
     console.log(data.data)
+    return data.data
 })
 
 export const initialState = {
     haveSms: false,
     user: {
-        phoneNumber: 'phoneNumber not-set',
-        smsCode: 'smsCode not-set',
-        jwtToken: 'jwtToken not-set',
+        phoneNumber: null,
+        smsCode: null,
+        jwtToken: null,
+        refreshToken: null
     },
-    failLogin: false,
+    failSmsSend: false,
     smsSendingLoading: false,
-
+    errorMsg: '',
+    failLoginCode: false,
 }
 
 export const userSlice = createSlice({
@@ -56,12 +59,18 @@ export const userSlice = createSlice({
         builder.addCase(sendOtp.fulfilled, (state) => {
             state.haveSms = true
         })
-        builder.addCase(sendOtp.rejected, (state) => {
-            state.failLogin = true
+        builder.addCase(sendOtp.rejected, (state, action) => {
+            state.failSmsSend = true
+            state.errorMsg = action.payload
         })
-        builder.addCase(checkOtp.pending, (state) => {})
-        builder.addCase(checkOtp.fulfilled, (state) => {})
-        builder.addCase(checkOtp.rejected, (state) => {})
+        builder.addCase(checkOtp.fulfilled, (state, action) => {
+            state.user.jwtToken = action?.payload
+            state.user.refreshToken = action?.payload?.refreshToken
+        })
+        // builder.addCase(checkOtp.pending, (state) => {})
+        builder.addCase(checkOtp.rejected, (state, action) => {
+            console.log(action.payload)
+        })
     }
 })
 
