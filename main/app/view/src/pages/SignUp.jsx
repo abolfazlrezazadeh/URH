@@ -1,17 +1,18 @@
 import { useDispatch, useSelector } from "react-redux"
-import VerificationInput from "react-verification-input"
+import {useNavigate} from 'react-router-dom'
 import {
   sendOtp,
-  checkOtp,
   updatePhoneNumber,
-  updateUserSms,
 } from "../features/user/userSlice"
+import Confirm from "../features/user/Confirm"
 
 export default function SignUp() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const haveSms = useSelector((store) => store.user.haveSms)
   const phoneNumber = useSelector((store) => store.user.user.phoneNumber)
   const smsSendingLoading = useSelector((store) => store.user.smsSendingLoading)
+  const jwtCode = useSelector((store) => store.user.user.jwtToken)
 
   const handlePhoneNumberChange = (e) => {
     let value = e.target.value
@@ -28,53 +29,9 @@ export default function SignUp() {
     dispatch(sendOtp(userNumAsObj))
   }
 
-  function checkOtpHandler(e) {
-    const userInfoToCheck = {
-      phone: phoneNumber,
-      code: e
-    }
-    console.log(userInfoToCheck)
-    dispatch(checkOtp(userInfoToCheck))
-  }
-
   if (haveSms) {
     return (
-      <>
-        <h1 className="mr-8 mt-24 text-3xl font-extrabold">
-          کد تایید را وارد کنید
-        </h1>
-        <p className="mr-[5vw] mt-10 text-base text-gray-600">
-          کد تایید به شماره ی
-          <span className="mx-2 font-bold text-black">{phoneNumber}</span>
-          فرستاده شد.
-        </p>
-        <p className="mr-[5vw] mt-10">
-          شماره موبایل صحیح است ؟
-          <span className="mx-2 text-blue-600">ویرایش</span>
-        </p>
-        <div dir="ltr" className="flex-center m-auto my-8 w-4/5">
-          <VerificationInput
-            inputProps={{ autoComplete: "one-time-code" }}
-            autoFocus={true}
-            onComplete={(e) => checkOtpHandler(e)}
-            validChars="0-9"
-            length={5}
-            placeholder=" "
-            classNames={{
-              container: "container",
-              character: "character",
-              characterInactive: "character--inactive",
-              characterSelected: "character--selected",
-              characterFilled: "character--filled",
-            }}
-          />
-        </div>
-        <h4>
-          <button className="m-auto mt-5 block rounded-full bg-[#00FFC1] px-20 py-3">
-            تایید
-          </button>
-        </h4>
-      </>
+      <Confirm />
     )
   }
 
@@ -87,7 +44,7 @@ export default function SignUp() {
           type="number"
           className="m-auto mt-8 block w-4/5 rounded-2xl border border-gray-500 py-3 text-center placeholder-gray-600 placeholder:font-bold"
           placeholder="شماره تلفن"
-          value={phoneNumber}
+          // value={phoneNumber}
           onChange={handlePhoneNumberChange}
           inputMode="numeric"
         />
