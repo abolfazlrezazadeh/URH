@@ -5,6 +5,7 @@ import {
   updatePhoneNumber,
 } from "../features/user/userSlice"
 import Confirm from "../features/user/Confirm"
+import { useEffect } from "react"
 
 export default function SignUp() {
   const dispatch = useDispatch()
@@ -28,6 +29,13 @@ export default function SignUp() {
     const userNumAsObj = { phone: phoneNumber }
     dispatch(sendOtp(userNumAsObj))
   }
+
+  useEffect(() => {
+    if (jwtCode) {
+      console.log('we have jwt code')
+      navigate('/bus')
+    }
+  }, [jwtCode])
 
   if (haveSms) {
     return (
