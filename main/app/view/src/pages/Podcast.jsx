@@ -2,27 +2,33 @@ import { CiSearch } from "react-icons/ci"
 
 export default function Podcast() {
   return (
-    <div>
-      <h1>پادکست کده</h1>
+    <img
+      src="/assets/podcasd-croped.png"
+      alt="podcast-page"
+      className="h-[100svh] w-screen"
+      draggable='false'
+    />
+    // <div>
+    //   <h1>پادکست کده</h1>
 
-      <div>
-        <input type="text" placeholder="چی میخای گوش کنی؟ " />
-        <CiSearch />
-      </div>
+    //   <div>
+    //     <input type="text" placeholder="چی میخای گوش کنی؟ " />
+    //     <CiSearch />
+    //   </div>
 
-      <ItemWrapper>
-        <Header>علمی</Header>
-      </ItemWrapper>
+    //   <ItemWrapper>
+    //     <Header>علمی</Header>
+    //   </ItemWrapper>
 
-      <ItemWrapper>
-        <Header>مذهبی</Header>
-      </ItemWrapper>
+    //   <ItemWrapper>
+    //     <Header>مذهبی</Header>
+    //   </ItemWrapper>
 
-      <ItemWrapper>
-        <Header>توسعه فردی</Header>
-      </ItemWrapper>
+    //   <ItemWrapper>
+    //     <Header>توسعه فردی</Header>
+    //   </ItemWrapper>
 
-    </div>
+    // </div>
   )
 }
 
