@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react"
+
+import { checkOtp } from "../user/userSlice"
 import VerificationInput from "react-verification-input"
-import {
-  checkOtp,
-} from "../user/userSlice"
+
+import Modal from "../../components/Modal"
 
 export default function Confirm() {
   const dispatch = useDispatch()
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const phoneNumber = useSelector((store) => store.user.user.phoneNumber)
 
   function checkOtpHandler(e) {
@@ -18,7 +21,8 @@ export default function Confirm() {
   }
 
   function editNumber() {
-    console.log("inside Edit Number function")
+    // setIsEditModalOpen(prevState => !prevState)
+    setIsEditModalOpen(true)
   }
 
   return (

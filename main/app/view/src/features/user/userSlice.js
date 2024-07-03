@@ -22,7 +22,7 @@ export const checkOtp = createAsyncThunk('user/checkOtp', async (phoneAndCode) =
         },
     })
     const data = await response.json()
-    console.log(data.data)
+    console.log(data)
     return data.data
 })
 
@@ -49,8 +49,8 @@ export const userSlice = createSlice({
         },
         updateUserSms: (state, action) => {
             state.user.smsCode = action.payload
-        }
-
+        },
+        
     },
     extraReducers: (builder) => {
         builder.addCase(sendOtp.pending, (state) => {
@@ -64,6 +64,7 @@ export const userSlice = createSlice({
             state.errorMsg = action.payload
         })
         builder.addCase(checkOtp.fulfilled, (state, action) => {
+            console.log(action.payload)
             state.user.jwtToken = action?.payload
             state.user.refreshToken = action?.payload?.refreshToken
         })
