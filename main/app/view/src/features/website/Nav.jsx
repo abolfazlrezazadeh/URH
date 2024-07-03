@@ -14,7 +14,7 @@ export default function Nav({ sidebarSetter }) {
 
       {/* Burger button */}
       <button
-        onClick={() => setIsMobileMenuShown(!isMobileMenuShown)}
+        // onClick={() => setIsMobileMenuShown(!isMobileMenuShown)}
         className="rounded-lg p-2 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-300 dark:hover:bg-gray-500"
       >
         <RxHamburgerMenu size={25} />

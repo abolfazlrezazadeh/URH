@@ -3,6 +3,7 @@ import Nav from "../features/website/Nav"
 import ImageSection from "../features/website/ImageSection"
 import TextArea from "../features/website/TextArea"
 import Slider from "../features/website/Slider"
+import Footer from "../features/website/Footer"
 
 export default function Website() {
   return (
@@ -63,6 +64,7 @@ export default function Website() {
         <Slider />
         <img src="assets/app.png" alt="" className="blocl mx-auto mb-5" />
       </ImageSection>
+      <Footer />
     </div>
   )
 }
