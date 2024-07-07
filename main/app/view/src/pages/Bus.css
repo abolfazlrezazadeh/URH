@@ -1,0 +1,13 @@
+a.mapboxgl-ctrl-logo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.85;
+  bottom: 5px;
+  position: relative;
+  margin: 0 0 -3px -3px !important;
+  display: block;
+  cursor: pointer;
+  background-image: url(https://map.ir/css/images/mapir-logo.svg) !important;
+  height: 100svh;
+}
