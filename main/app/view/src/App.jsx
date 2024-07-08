@@ -10,6 +10,11 @@ import Bus from "./pages/Bus"
 import Podcast from "./pages/Podcast"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BsTypeH1 } from "react-icons/bs"
+import NavBar from "./components/NavBar"
+import { Navbar } from "@material-tailwind/react"
+import Taxi from "./pages/Taxi"
+import QrCode from "./pages/QrCode"
 
 function App() {
   return (
@@ -20,6 +25,16 @@ function App() {
           <Route path="website" element={<Website />} />
 
           <Route path="bus" element={<Bus />} />
+          <Route
+            path="taxi"
+            element={<Taxi />}
+          />
+
+          <Route
+            path="qrcode"
+            element={<QrCode />}
+          />
+
           <Route path="podcast" element={<Podcast />} />
           <Route path="information" element={<Information />} />
           <Route path="invite" element={<Invite />} />
