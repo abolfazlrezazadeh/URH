@@ -17,11 +17,11 @@ const App = () => {
       <NavBar />
       <Map
         initialViewState={{
-          longitude: 51.375433528216654,
-          latitude: 35.73356434056531,
-          zoom: 11,
+          longitude: 45.0732025,
+          latitude: 37.550639,
+          zoom: 15,
         }}
-        style={{ width: '100svh', height: '100svh' }}
+        style={{ width: "100%", height: "100dvh" }}
         // choose your style from https://help.map.ir/documentation/styles/
         mapStyle="https://map.ir/vector/styles/main/mapir-xyz-style.json"
         // send your api key along with every request to map.ir (get your api key here: https://corp.map.ir/registration)
