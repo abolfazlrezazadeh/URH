@@ -10,9 +10,6 @@ import Bus from "./pages/Bus"
 import Podcast from "./pages/Podcast"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { BsTypeH1 } from "react-icons/bs"
-import NavBar from "./components/NavBar"
-import { Navbar } from "@material-tailwind/react"
 import Taxi from "./pages/Taxi"
 import QrCode from "./pages/QrCode"
 
