@@ -1,13 +1,20 @@
-import Information from "./Information";
-import Invite from "./Invite";
-import Settings from "./Settings";
-import UserProfile from "./UserProfile";
-import SignUp from './SignUp'
-import Support from './Support'
+import Information from "./pages/Information"
+import Invite from "./pages/Invite"
+import Settings from "./pages/Settings"
+import UserProfile from "./pages/UserProfile"
+import SignUp from "./pages/SignUp"
+import Support from "./pages/Support"
+import GoBackBtn from "./components/GoBackBtn"
+import Website from "./pages/Website"
+import Bus from "./pages/Bus"
+import Podcast from "./pages/Podcast"
 
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Confirm from "./Confirm";
-import GoBackBtn from "./GoBackBtn";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BsTypeH1 } from "react-icons/bs"
+import NavBar from "./components/NavBar"
+import { Navbar } from "@material-tailwind/react"
+import Taxi from "./pages/Taxi"
+import QrCode from "./pages/QrCode"
 
 function App() {
   return (
@@ -15,17 +22,31 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignUp />} />
-          <Route path="Confirm" element={<Confirm />} />
+          <Route path="website" element={<Website />} />
+
+          <Route path="bus" element={<Bus />} />
+          <Route
+            path="taxi"
+            element={<Taxi />}
+          />
+
+          <Route
+            path="qrcode"
+            element={<QrCode />}
+          />
+
+          <Route path="podcast" element={<Podcast />} />
           <Route path="information" element={<Information />} />
           <Route path="invite" element={<Invite />} />
           <Route path="settings" element={<Settings />} />
           <Route path="userprofile" element={<UserProfile />} />
           <Route path="support" element={<Support />} />
-          <Route path="*" element={<GoBackBtn /> } />
+
+          <Route path="*" element={<GoBackBtn />} />
         </Routes>
       </BrowserRouter>
     </>
-  );
+  )
 }
 
 export default App

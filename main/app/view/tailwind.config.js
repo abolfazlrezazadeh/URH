@@ -8,7 +8,7 @@ export default withMT({
   theme: {
     extend: {
       colors: {
-        primary: '#66CDAA',
+        primary: '#00FFC1',
         inviteBg: '#7C84C6',
         inviteBgLite: '#8F78D1'
       }

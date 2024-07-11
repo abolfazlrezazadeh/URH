@@ -1,4 +1,4 @@
-import GoBackBtn from "./GoBackBtn";
+import GoBackBtn from "../components/GoBackBtn"
 
 export default function Invite() {
   return (
