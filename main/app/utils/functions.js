@@ -8,7 +8,11 @@ const {
 } = require("./constatnts");
 
 function randomNumberGenerator() {
-  return Math.floor(Math.random() * 90000);
+  let digits;
+  digits = String(Math.floor(10_000 + Math.random() * 90_000));
+  if (digits.length != 5)
+    digits = String(Math.floor(10_000 + Math.random() * 90_000));
+  return digits;
 }
 async function signAccessToken(userId) {
   return new Promise(async (resolve, reject) => {
@@ -56,10 +60,23 @@ async function verifyRefreshToken(token) {
     next(error);
   }
 }
+function deleteInvalidPropertyInObject(data = {}, blackList = []) {
+  let nullishData = ["", " ", "  ", "0", null, undefined, 0];
+  Object.keys(data).forEach((key) => {
+    if (blackList.includes(key)) delete data[key];
+    if (typeof data[key] == "string") data[key] = data[key].trim();
+    if (Array.isArray(data[key]) && data[key].length > 0)
+      data[key] = data[key].map((item) => item.trim());
+    //if array is empty dont update that field
+    if (Array.isArray(data[key]) && data[key].length == 0) delete data[key];
+    if (nullishData.includes(data[key])) delete data[key];
+  });
+}
 
 module.exports = {
   randomNumberGenerator,
   signAccessToken,
   signRefreshToken,
   verifyRefreshToken,
+  deleteInvalidPropertyInObject,
 };
