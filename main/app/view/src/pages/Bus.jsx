@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react"
-import Map, { GeolocateControl, Marker, Popup } from "react-map-gl"
+import { useMemo } from "react"
+import Map, { GeolocateControl, Marker } from "react-map-gl"
+// import Map, { Marker } from "react-map-gl"
 import NavBar from "../components/NavBar"
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./Bus.css"
@@ -44,7 +45,7 @@ const App = () => {
         }}
         style={{ width: "100%", height: "100dvh" }}
         // choose your style from https://help.map.ir/documentation/styles/
-        mapStyle="https://map.ir/vector/styles/main/mapir-xyz-style.json"
+        mapStyle="https://map.ir/vector/styles/main/mapir-Dove-style.json"
         // send your api key along with every request to map.ir (get your api key here: https://corp.map.ir/registration)
         transformRequest={(url) => {
           return {
