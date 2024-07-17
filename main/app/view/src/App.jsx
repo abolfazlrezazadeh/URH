@@ -11,7 +11,7 @@ import Podcast from "./pages/Podcast"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Taxi from "./pages/Taxi"
-import QrCode from "./pages/QrCode"
+import Payment from "./pages/Payment"
 
 function App() {
   return (
@@ -28,8 +28,8 @@ function App() {
           />
 
           <Route
-            path="qrcode"
-            element={<QrCode />}
+            path="payment"
+            element={<Payment />}
           />
 
           <Route path="podcast" element={<Podcast />} />
