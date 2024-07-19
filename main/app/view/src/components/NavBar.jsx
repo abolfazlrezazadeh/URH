@@ -1,3 +1,4 @@
+import { MdPayment } from "react-icons/md"
 import { BiQr } from "react-icons/bi"
 import { FaTaxi } from "react-icons/fa"
 import { BsBusFrontFill } from "react-icons/bs"
@@ -33,7 +34,7 @@ export default function NavBar() {
           alignItems: "center",
         }}
       >
-        <BiQr />
+        <MdPayment />
       </NavLink>
       <NavLink
         to="/taxi"

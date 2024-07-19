@@ -22,8 +22,8 @@ export const checkOtp = createAsyncThunk('user/checkOtp', async (phoneAndCode) =
         },
     })
     const data = await response.json()
-    console.log(data)
-    return data.data
+    // console.log(data)
+    return data
 })
 
 export const initialState = {
@@ -68,7 +68,9 @@ export const userSlice = createSlice({
             state.user.jwtToken = action?.payload
             state.user.refreshToken = action?.payload?.refreshToken
         })
-        // builder.addCase(checkOtp.pending, (state) => {})
+        builder.addCase(checkOtp.pending, (state, action) => {
+            // console.log(action.payload)
+        })
         builder.addCase(checkOtp.rejected, (state, action) => {
             console.log(action.payload)
         })

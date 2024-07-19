@@ -13,6 +13,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Taxi from "./pages/Taxi"
 import Payment from "./pages/Payment"
 
+import Nfc from "./pages/Nfc"
+
 function App() {
   return (
     <>
@@ -38,6 +40,8 @@ function App() {
           <Route path="settings" element={<Settings />} />
           <Route path="userprofile" element={<UserProfile />} />
           <Route path="support" element={<Support />} />
+
+          <Route path="nfc" element={<Nfc />} />
 
           <Route path="*" element={<GoBackBtn />} />
         </Routes>
