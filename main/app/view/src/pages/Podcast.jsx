@@ -1,4 +1,4 @@
-import { CiSearch } from "react-icons/ci"
+// import { CiSearch } from "react-icons/ci"
 
 export default function Podcast() {
   return (
@@ -37,7 +37,7 @@ export default function Podcast() {
         <div className="flex flex-row gap-2">
           <Item imgSrc="assets/podcast/s1.png" title="هنر جنگ" />
           <Item imgSrc="assets/podcast/s2.png" title="باشگاه 5 صبحی" />
-          <Item imgSrc="assets/podcast/s3.png" title="کون گشاد نباشیم" />
+          <Item imgSrc="assets/podcast/s3.png" title="هنر نه گفتن" />
         </div>
       </ItemWrapper>
     </div>
@@ -46,7 +46,7 @@ export default function Podcast() {
 
 function Header({ children }) {
   return (
-    <h2 className="w-max rounded-full border-r border-t border-gray-600 text-3xl">
+    <h2 className="w-max rounded-full border-r border-t border-gray-600 text-2xl">
       {children}
     </h2>
   )
@@ -62,5 +62,5 @@ function Item({ imgSrc, title }) {
 }
 
 function ItemWrapper({ children }) {
-  return <div className="flex flex-col gap-3 mb-5">{children}</div>
+  return <div className="flex flex-col gap-3 mb-5 pr-3">{children}</div>
 }
