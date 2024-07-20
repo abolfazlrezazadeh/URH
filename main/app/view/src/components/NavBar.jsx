@@ -51,7 +51,7 @@ export default function NavBar() {
         <FaTaxi />
       </NavLink>
       <NavLink
-        to="/support"
+        to="/podcast"
         style={{
           fontSize: "1.25rem",
           padding: "0.75rem",

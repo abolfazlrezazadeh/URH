@@ -20,8 +20,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignUp />} />
-          <Route path="website" element={<Website />} />
+          <Route path="/" element={<Website />} />
+          {/* <Route path="website" element={<Website />} /> */}
 
           <Route path="bus" element={<Bus />} />
           <Route
