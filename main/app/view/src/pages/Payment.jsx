@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Html5QrcodeScanner } from "html5-qrcode"
 import NavBar from "../components/NavBar"
+import { Link } from "react-router-dom"
 
 export default function Payment() {
   const [scanResult, setScanResult] = useState(null)
@@ -71,7 +72,7 @@ export default function Payment() {
           <div id="reader"></div>
         )
       ) : (
-        <h1>i am gonna scan for nfc</h1>
+        <Link to='/nfc'>Go to nfc tab</Link>
       )}
     </>
   )

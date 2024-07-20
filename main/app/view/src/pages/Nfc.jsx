@@ -30,10 +30,16 @@ export default function NFCReader() {
   //   }
   // })
 
-  if (chrome.nfc) {
-    document.write("NFC is supported")
+  if ("NDEFReader" in window) {
+    document.write("NFC is supported - NDEFReader in window <hr />")
   } else {
-    document.write("no support? chrome.nfc")
+    document.write("support yoxde al chah => NDEFReader in window <hr />")
+  }
+
+  if ("NFCReader" in window) {
+    document.write("NFC is supported - NFCReader in window <hr />")
+  } else {
+    document.write("NFCReader in window da support elamir vallah <hr />")
   }
 
   return (
