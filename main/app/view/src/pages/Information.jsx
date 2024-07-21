@@ -37,8 +37,8 @@ export default function Information() {
       </div>
 
       <div className="pr-5">
-        <InfoCard icon={<CiRoute />} text="مسیر های منتخب" />
-        <InfoCard icon={<GoLocation />} text="مکان های منتخب" />
+        <InfoCard icon={<CiRoute />} onClick={() => navigate('/developing')} text="مسیر های منتخب" />
+        <InfoCard icon={<GoLocation />} onClick={() => navigate('/developing')} text="مکان های منتخب" />
         <InfoCard
           icon={<FaUserFriends />}
           text="دعوت دوستان"
