@@ -1,50 +1,59 @@
-import { useEffect, useState } from "react"
+import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function NFCReader() {
-  // useEffect(() => {
-  //   const ndef = new NFCReader()
-  //   console.log(ndef)
-  // }, [])
-  // alert("string", chrome.nfc)
+  const [reading, setReading] = useState(false)
+  const [tagData, setTagData] = useState(null)
 
-  // chrome.nfc.findDevices((d) => {
-  //   for (var i = 0; i < d.length; i++) {
-  //     console.log((d[i].vendorId, d[i].productId))
-  //     document.write(d[i].vendorId, d[i].productId)
-  //   }
-  // })
+  const navigate = useNavigate()
 
-  // if ("NDEFReader" in window) {
-  //   // NFC feature is supported
-  //   document.write("NFC is supported "NDEFReader" in window")
-  // } else {
-  //   // NFC feature is not supported
-  //   document.write("NFC is not supported "NDEFReader" in window")
-  // }
+  useEffect(() => {
+    // Check if the device is a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 
-  // chrome.nfc.read(device, { timeout: 5 }, function (t, m) {
-  //   for (var i = 0;i < m.ndef.length ; i++){
-  //     var ndef = m.ndef[i]
-  //     console.log("NDEF message", ndef.text || ndef.uri)
-  //     document.write("NDEF message", ndef.text || ndef.uri)
-  //   }
-  // })
+    if (isMobile && "NDEFReader" in window) {
+      const ndef = new NDEFReader()
 
-  if ("NDEFReader" in window) {
-    document.write("NFC is supported - NDEFReader in window <hr />")
-  } else {
-    document.write("support yoxde al chah => NDEFReader in window <hr />")
-  }
+      ndef.onreading = (event) => {
+        setTagData(event.message)
+      }
 
-  if ("NFCReader" in window) {
-    document.write("NFC is supported - NFCReader in window <hr />")
-  } else {
-    document.write("NFCReader in window da support elamir vallah <hr />")
+      ndef.onerror = (error) => {
+        console.log("Error reading NFC tag:", error)
+      }
+
+      return () => {
+        // Cleanup code when component is unmounted
+        ndef.stop()
+      }
+    } else {
+      alert("NFCReader is not supported on this device.")
+      navigate('/payment')
+
+    }
+  }, [])
+
+  const handleScan = () => {
+    if (!reading) {
+      ndef.scan()
+      setReading(true)
+    } else {
+      // Stop scanning
+      ndef.stop()
+      setReading(false)
+      setTagData(null)
+    }
   }
 
   return (
     <div>
-      <h1>?????? NFC Reader</h1>
+      <h1>NFC Reader</h1>
+      {tagData && (
+        <div>
+          <h2>Tag Data:</h2>
+          <p>{JSON.stringify(tagData)}</p>
+        </div>
+      )}
     </div>
   )
 }
