@@ -5,8 +5,8 @@ import { BsInstagram } from "react-icons/bs"
 export default function Footer() {
   return (
     <>
-      <div className="flex flex-wrap gap-2 p-2">
-        <div className="flex-center w-32 cursor-pointer rounded-md border border-gray-600 p-4 text-center">
+      <div className="flex flex-wrap justify-center gap-2 p-2">
+        <div className="flex-center w-32 cursor-pointer whitespace-nowrap rounded-md border border-gray-600 p-4 text-center">
           سوالات متداول
         </div>
         <div className="flex-center w-32 cursor-pointer rounded-md border border-gray-600 p-4 text-center">

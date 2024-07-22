@@ -1,8 +1,11 @@
 // import { CiSearch } from "react-icons/ci"
+import NavBar from "../components/NavBar"
 
 export default function Podcast() {
   return (
-    <div>
+    <>
+      <NavBar />
+      <div>
       <h1 className="font-bold text-2xl mt-5 mr-5">پادکست کده</h1>
 
       <div>
@@ -14,33 +17,34 @@ export default function Podcast() {
         {/* <CiSearch /> */}
       </div>
 
-      <ItemWrapper>
-        <Header>علمی</Header>
-        <div className="flex flex-row gap-2">
-          <Item imgSrc="/assets/podcast/elmi1.png" title="زمین" />
-          <Item imgSrc="/assets/podcast/elmi2.png" title="مورچه" />
-          <Item imgSrc="/assets/podcast/elmi3.png" title="ماشین" />
-        </div>
-      </ItemWrapper>
+        <ItemWrapper>
+          <Header>علمی</Header>
+          <div className="flex flex-row gap-2">
+            <Item imgSrc="/assets/podcast/elmi1.png" title="زمین" />
+            <Item imgSrc="/assets/podcast/elmi2.png" title="مورچه" />
+            <Item imgSrc="/assets/podcast/elmi3.png" title="ماشین" />
+          </div>
+        </ItemWrapper>
 
-      <ItemWrapper>
-        <Header>مذهبی</Header>
-        <div className="flex flex-row gap-2">
-          <Item imgSrc="assets/podcast/mzhbi1.png" title="زیارت عاشورا" />
-          <Item imgSrc="assets/podcast/mzhbi2.png" title="انقلاب" />
-          <Item imgSrc="assets/podcast/mzhbi3.png" title="سخنان رهبر" />
-        </div>
-      </ItemWrapper>
+        <ItemWrapper>
+          <Header>مذهبی</Header>
+          <div className="flex flex-row gap-2">
+            <Item imgSrc="assets/podcast/mzhbi1.png" title="زیارت عاشورا" />
+            <Item imgSrc="assets/podcast/mzhbi2.png" title="انقلاب" />
+            <Item imgSrc="assets/podcast/mzhbi3.png" title="سخنان رهبر" />
+          </div>
+        </ItemWrapper>
 
-      <ItemWrapper>
-        <Header>توسعه فردی</Header>
-        <div className="flex flex-row gap-2">
-          <Item imgSrc="assets/podcast/s1.png" title="هنر جنگ" />
-          <Item imgSrc="assets/podcast/s2.png" title="باشگاه 5 صبحی" />
-          <Item imgSrc="assets/podcast/s3.png" title="هنر نه گفتن" />
-        </div>
-      </ItemWrapper>
-    </div>
+        <ItemWrapper>
+          <Header>توسعه فردی</Header>
+          <div className="flex flex-row gap-2">
+            <Item imgSrc="assets/podcast/s1.png" title="هنر جنگ" />
+            <Item imgSrc="assets/podcast/s2.png" title="باشگاه 5 صبحی" />
+            <Item imgSrc="assets/podcast/s3.png" title="هنر نه گفتن" />
+          </div>
+        </ItemWrapper>
+      </div>
+    </>
   )
 }
 
@@ -54,7 +58,7 @@ function Header({ children }) {
 
 function Item({ imgSrc, title }) {
   return (
-    <di className='flex-col flex-center'>
+    <di className="flex-center flex-col">
       <img src={imgSrc} alt={title} className="" />
       <p className="">{title}</p>
     </di>
@@ -62,5 +66,5 @@ function Item({ imgSrc, title }) {
 }
 
 function ItemWrapper({ children }) {
-  return <div className="flex flex-col gap-3 mb-5 pr-3">{children}</div>
+  return <div className="mb-5 flex flex-col gap-3 pr-3">{children}</div>
 }
