@@ -6,6 +6,7 @@ import {
 } from "../features/user/userSlice"
 import Confirm from "../features/user/Confirm"
 import { useEffect } from "react"
+import NavBar from "../components/NavBar"
 
 export default function SignUp() {
   const dispatch = useDispatch()
@@ -45,6 +46,7 @@ export default function SignUp() {
 
   return (
     <>
+      <NavBar />
       <h1 className="mr-8 mt-24 text-4xl font-extrabold">خوش آمدید</h1>
       <p className="mr-10 mt-10 text-base">لطفا شماره ی خودرا وارد فرمایید</p>
       <form onSubmit={(e) => handleSubmit(e)}>

@@ -7,15 +7,16 @@ import { CiRoute } from "react-icons/ci"
 
 import InfoCard from "../components/InfoCard"
 
-import { useNavigate } from "react-router-dom"
+import { useNavigate }from "react-router-dom"
 import GoBackBtn from "../components/GoBackBtn"
+import NavBar from "../components/NavBar"
 
 export default function Information() {
-  const navigate = useNavigate()
-
+  const navigate =useNavigate()
   return (
     <>
       <GoBackBtn />
+      <NavBar />
       <div className="mt-10 flex flex-row items-center justify-evenly">
         <img src="/assets/user.png" alt="user" className="w-1/4" />
         <div className="space-y-6 text-center text-xl font-bold tracking-wider">
@@ -37,22 +38,22 @@ export default function Information() {
       </div>
 
       <div className="pr-5">
-        <InfoCard icon={<CiRoute />} onClick={() => navigate('/developing')} text="مسیر های منتخب" />
-        <InfoCard icon={<GoLocation />} onClick={() => navigate('/developing')} text="مکان های منتخب" />
+        <InfoCard icon={<CiRoute />} onClick={() => navigate('developing')} text="مسیر های منتخب" />
+        <InfoCard icon={<GoLocation />} onClick={() => navigate('developing')} text="مکان های منتخب" />
         <InfoCard
           icon={<FaUserFriends />}
           text="دعوت دوستان"
-          onClick={() => navigate("/invite")}
+          onClick={() => navigate("invite")}
         />
         <InfoCard
           icon={<AiOutlineSetting />}
           text="تنظیمات"
-          onClick={() => navigate("/settings")}
+          onClick={() => navigate("settings")}
         />
         <InfoCard
           icon={<BiSupport />}
           text="پشتیبانی"
-          onClick={() => navigate("/support")}
+          onClick={() => navigate("support")}
         />
         <InfoCard icon={<FiHelpCircle />} text="راهنما" />
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import NavBar from "../components/NavBar"
 
 export default function NFCReader() {
   const [reading, setReading] = useState(false)
@@ -46,7 +47,8 @@ export default function NFCReader() {
   }
 
   return (
-    <div>
+    <>
+    <NavBar />
       <h1>NFC Reader</h1>
       {tagData && (
         <div>
@@ -54,6 +56,6 @@ export default function NFCReader() {
           <p>{JSON.stringify(tagData)}</p>
         </div>
       )}
-    </div>
+    </>
   )
 }
