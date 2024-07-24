@@ -21,26 +21,21 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Website />} />
-          {/* <Route path="website" element={<Website />} /> */}
 
           <Route path="bus" element={<Bus />} />
-          <Route
-            path="taxi"
-            element={<Taxi />}
-          />
+          <Route path="taxi" element={<Taxi />} />
 
-          <Route
-            path="payment"
-            element={<Payment />}
-          />
-
+          <Route path="payment" element={<Payment />} />
           <Route path="podcast" element={<Podcast />} />
-          <Route path="information" element={<Information />} />
-          <Route path="invite" element={<Invite />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="userprofile" element={<UserProfile />} />
-          <Route path="support" element={<Support />} />
-          <Route path="developing" element={<Developing />} />
+
+          <Route path="user">
+            <Route index element={<Information />} />
+            <Route path="invite" element={<Invite />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="userprofile" element={<UserProfile />} />
+            <Route path="support" element={<Support />} />
+            <Route path="developing" element={<Developing />} />
+          </Route>
 
           <Route path="nfc" element={<Nfc />} />
 

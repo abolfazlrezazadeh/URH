@@ -18,7 +18,7 @@ export default function Website() {
           حمل ونقل عمومی حوشمند
         </h4>
         <Link
-          to="bus"
+          to="user"
           className="mx-auto mt-5 block w-1/2 rounded-lg bg-primary px-4 py-2 text-center"
         >
           ورود به اپلیکیشن

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import NavBar from "../components/NavBar"
 
 export default function NFCReader() {
   const [reading, setReading] = useState(false)
@@ -10,6 +11,7 @@ export default function NFCReader() {
   useEffect(() => {
     // Check if the device is a mobile device
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    document.write(isMobile)
 
     if (isMobile && "NDEFReader" in window) {
       const ndef = new NDEFReader()
@@ -46,7 +48,8 @@ export default function NFCReader() {
   }
 
   return (
-    <div>
+    <>
+    <NavBar />
       <h1>NFC Reader</h1>
       {tagData && (
         <div>
@@ -54,6 +57,6 @@ export default function NFCReader() {
           <p>{JSON.stringify(tagData)}</p>
         </div>
       )}
-    </div>
+    </>
   )
 }

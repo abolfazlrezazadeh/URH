@@ -1,27 +1,11 @@
 import { MdPayment } from "react-icons/md"
-import { BiQr } from "react-icons/bi"
-import { FaTaxi } from "react-icons/fa"
-import { BsBusFrontFill } from "react-icons/bs"
-import { BiSupport } from "react-icons/bi"
+import { FaRegUser } from "react-icons/fa"
+
 import { NavLink } from "react-router-dom"
 
 export default function NavBar() {
   return (
-    <nav className="absolute bottom-4 left-1/2 top-[90%] z-50 flex h-14 w-4/5 -translate-x-1/2 -translate-y-1/2 transform items-center justify-around rounded-full border-t-2 border-gray-400 bg-white/95">
-      <NavLink
-        to="/bus"
-        className={({ isActive }) => (isActive ? "bg-primary" : "")}
-        style={{
-          fontSize: "1.25rem",
-          padding: "0.75rem",
-          borderRadius: "50%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <BsBusFrontFill />
-      </NavLink>
+    <nav className="fixed bottom-0 z-50 flex h-14 w-full items-center justify-around rounded-tl-3xl rounded-tr-3xl border-t-2 border-gray-300 bg-white/90">
       <NavLink
         to="/payment"
         className={({ isActive }) => (isActive ? "bg-primary" : "")}
@@ -37,6 +21,38 @@ export default function NavBar() {
         <MdPayment />
       </NavLink>
       <NavLink
+        to="/bus"
+        className={({ isActive }) => (isActive ? "!bg-primary" : "")}
+        style={{
+          fontSize: "1.25rem",
+          padding: "0.75rem",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src="/icons/bus.svg" alt="bus-icon" />
+      </NavLink>
+      <NavLink
+        to="/user"
+        className={({ isActive }) => (isActive ? "!bg-primary" : "")}
+        style={{
+          fontSize: "1.4rem",
+          padding: "0.75rem",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          border: "2px solid #e0e0e0",
+          transform: "translateY(-18px)",
+          background: "rgb(255 255 255 / 0.95)",
+        }}
+      >
+        <FaRegUser />
+      </NavLink>
+
+      <NavLink
         to="/taxi"
         className={({ isActive }) => (isActive ? "bg-primary" : "")}
         style={{
@@ -48,7 +64,7 @@ export default function NavBar() {
           alignItems: "center",
         }}
       >
-        <FaTaxi />
+        <img src="/icons/taxi.svg" alt="taxi-icon" />
       </NavLink>
       <NavLink
         to="/podcast"
@@ -62,7 +78,7 @@ export default function NavBar() {
         }}
         className={({ isActive }) => (isActive ? "bg-primary" : "")}
       >
-        <BiSupport />
+        <img src="/icons/podcast.svg" className="" alt="podcast-icon" />
       </NavLink>
     </nav>
   )
