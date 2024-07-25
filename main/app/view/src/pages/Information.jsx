@@ -7,34 +7,28 @@ import { CiRoute } from "react-icons/ci"
 
 import InfoCard from "../components/InfoCard"
 
-import { useNavigate }from "react-router-dom"
-import GoBackBtn from "../components/GoBackBtn"
+import { Link, useNavigate }from "react-router-dom"
 import NavBar from "../components/NavBar"
 
 export default function Information() {
   const navigate =useNavigate()
   return (
     <>
-      <GoBackBtn />
       <NavBar />
-      <div className="mt-10 flex flex-row items-center justify-evenly">
+      <Link to='profile' className="mt-10 flex flex-row items-center justify-evenly">
         <img src="/assets/user.png" alt="user" className="w-1/4" />
         <div className="space-y-6 text-center text-xl font-bold tracking-wider">
           <p>پوریا موریا</p>
           <p>09314896513</p>
         </div>
-      </div>
+      </Link>
 
-      <div className="m-auto mt-4 flex h-48 w-[90%] flex-col justify-between rounded-md bg-gradient-to-r from-gray-900 to-blue-gray-700 p-5">
-        <div className="font-bold tracking-wider text-white">
-          <p>موجودی</p>
-          <p>تومان 20,000</p>
-        </div>
-        <div className="flex justify-end">
-          <button className="rounded-lg bg-primary px-3 py-1">
-            افزایش موجودی
-          </button>
-        </div>
+      <div className="bg-gray-100/20 border-b-2 border-gray-200 rounded-full m-auto flex justify-between py-4 my-8 px-2">
+        <div className="flex flex-row gap-2">
+          <p>موجودی: </p>
+          <p className="font-bold">15,000</p>
+        </div> 
+        <button className="text-blue-400">افزایش موجودی</button>
       </div>
 
       <div className="pr-5">
