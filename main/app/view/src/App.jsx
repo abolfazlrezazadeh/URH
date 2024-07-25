@@ -34,6 +34,7 @@ function App() {
             <Route path="settings" element={<Settings />} />
             <Route path="userprofile" element={<UserProfile />} />
             <Route path="support" element={<Support />} />
+            <Route path="profile" element={<UserProfile />} />
             <Route path="developing" element={<Developing />} />
           </Route>
 
