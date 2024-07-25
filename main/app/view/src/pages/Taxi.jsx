@@ -1,4 +1,3 @@
-import GoToUser from "../components/GoToUser"
 import NavBar from "../components/NavBar"
 import Map from "react-map-gl"
 
@@ -8,7 +7,6 @@ const myMapIrToken =
 export default function Taxi() {
   return (
     <>
-      <GoToUser />
       <Map
         initialViewState={{
           longitude: 45.07489773806866,
