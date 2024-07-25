@@ -4,6 +4,10 @@ import ImageSection from "../features/website/ImageSection"
 import TextArea from "../features/website/TextArea"
 import Slider from "../features/website/Slider"
 import Footer from "../features/website/Footer"
+import myImage from '../../dist/assets/map.png'
+import myHand from '../../dist/assets/hand.png'
+import myPhone from '../../dist/assets/phone.png'
+import myApp from '../../dist/assets/app.png'
 
 export default function Website() {
   return (
@@ -28,7 +32,7 @@ export default function Website() {
         </h4>
       </section>
       <ImageSection>
-        <img src="/assets/map.png" alt="aks" className="mx-auto block" />
+        <img src={myImage} alt="aks" className="mx-auto block" />
       </ImageSection>
       <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">مسیریابی</h4>
@@ -39,7 +43,7 @@ export default function Website() {
         </p>
       </TextArea>
       <ImageSection>
-        <img src="/assets/hand.png" alt="aks" className="mx-auto block" />
+        <img src={myHand} alt="aks" className="mx-auto block" />
       </ImageSection>
       <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">صرفه جویی در زمان</h4>
@@ -50,7 +54,7 @@ export default function Website() {
         </p>
       </TextArea>
       <ImageSection>
-        <img src="/assets/phone.png" alt="aks" className="mx-auto block" />
+        <img src={myPhone} alt="aks" className="mx-auto block" />
       </ImageSection>
       <TextArea className="bg-white p-2">
         <h4 className="my-4 mr-5 text-xl">پرداخت هوشمند</h4>
@@ -62,7 +66,7 @@ export default function Website() {
       </TextArea>
       <ImageSection>
         <Slider />
-        <img src="assets/app.png" alt="" className="blocl mx-auto mb-5" />
+        <img src={myApp} alt="app" className="blocl mx-auto mb-5" />
       </ImageSection>
       <Footer />
     </div>
