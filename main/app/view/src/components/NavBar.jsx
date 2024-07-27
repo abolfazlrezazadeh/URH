@@ -1,6 +1,11 @@
 import { MdPayment } from "react-icons/md"
 import { FaRegUser } from "react-icons/fa"
 
+import taxiIcon from "../../public/icons/taxi.svg"
+import podcastIcon from "../../public/icons/podcast.svg"
+import busIcon from "../../public/icons/bus.svg"
+
+
 import { NavLink } from "react-router-dom"
 
 export default function NavBar() {
@@ -32,7 +37,7 @@ export default function NavBar() {
           alignItems: "center",
         }}
       >
-        <img src="/icons/bus.svg" alt="bus-icon" />
+        <img src={busIcon} alt="bus-icon" />
       </NavLink>
       <NavLink
         to="/user"
@@ -64,7 +69,7 @@ export default function NavBar() {
           alignItems: "center",
         }}
       >
-        <img src="/icons/taxi.svg" alt="taxi-icon" />
+        <img src={taxiIcon} alt="taxi-icon" />
       </NavLink>
       <NavLink
         to="/podcast"
@@ -78,7 +83,7 @@ export default function NavBar() {
         }}
         className={({ isActive }) => (isActive ? "bg-primary" : "")}
       >
-        <img src="/icons/podcast.svg" className="" alt="podcast-icon" />
+        <img src={podcastIcon} className="" alt="podcast-icon" />
       </NavLink>
     </nav>
   )

@@ -4,6 +4,8 @@ import ImageSection from "../features/website/ImageSection"
 import TextArea from "../features/website/TextArea"
 import Slider from "../features/website/Slider"
 import Footer from "../features/website/Footer"
+
+// images
 import myImage from '../../dist/assets/map.png'
 import myHand from '../../dist/assets/hand.png'
 import myPhone from '../../dist/assets/phone.png'

@@ -1,6 +1,7 @@
 import Card from "../components/Card"
 import GoBackBtn from "../components/GoBackBtn"
 import NavBar from "../components/NavBar"
+import userImg from "../../public/assets/user.png"
 
 export default function UserProfile() {
   return (
@@ -8,7 +9,7 @@ export default function UserProfile() {
       <GoBackBtn />
       <NavBar />
       <img
-        src="/assets/user.png"
+        src={userImg}
         className="m-auto mt-5 w-4/5 rounded-full border border-cyan-500"
         alt="logo"
       />

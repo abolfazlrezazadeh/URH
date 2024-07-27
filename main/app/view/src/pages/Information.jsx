@@ -4,7 +4,7 @@ import { AiOutlineSetting } from "react-icons/ai"
 import { FaUserFriends } from "react-icons/fa"
 import { GoLocation } from "react-icons/go"
 import { CiRoute } from "react-icons/ci"
-
+import userImg from "../../public/assets/user.png"
 import InfoCard from "../components/InfoCard"
 
 import { Link, useNavigate }from "react-router-dom"
@@ -16,7 +16,7 @@ export default function Information() {
     <>
       <NavBar />
       <Link to='profile' className="mt-10 flex flex-row items-center justify-evenly">
-        <img src="/assets/user.png" alt="user" className="w-1/4" />
+        <img src={userImg} alt="user" className="w-1/4" />
         <div className="space-y-6 text-center text-xl font-bold tracking-wider">
           <p>پوریا موریا</p>
           <p>09314896513</p>

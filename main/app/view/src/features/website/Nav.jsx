@@ -1,21 +1,23 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 
-const ROUTES = ["Home", "About", "Services", "Pricing", "Contact"];
+import Logo from "../../../public/assets/logo.png"
+
+// const ROUTES = ["Home", "About", "Services", "Pricing", "Contact"];
 export default function Nav({ sidebarSetter }) {
   
-  const [isMobileMenuShown, setIsMobileMenuShown] = useState(false);
+  const [isMobileMenuShown] = useState(false);
   return (
     <nav className="relative bg-white p-2 z-10 flex flex-wrap items-center justify-between flex-row-reverse">
       {/* Logo */}
       <a href="" className="">
-        <img src="/assets/logo.png" alt="logo" className="aspect-square w-16" />
+        <img src={Logo} alt="logo" className="aspect-square w-16" />
       </a>
 
       {/* Burger button */}
       <button
         // onClick={() => setIsMobileMenuShown(!isMobileMenuShown)}
-        className="rounded-lg p-2 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-300 dark:hover:bg-gray-500"
+        className="rounded-lg p-2 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-500"
       >
         <RxHamburgerMenu size={25} />
       </button>
@@ -26,7 +28,7 @@ export default function Nav({ sidebarSetter }) {
           isMobileMenuShown === false && "hidden"
         } w-full md:block md:w-auto`}
       >
-        <ul className="flex lg:dark:text-white flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 text-lg md:flex-row md:space-x-8 md:border-none md:bg-transparent">
+        {/* <ul className="flex lg:dark:text-white flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 text-lg md:flex-row md:space-x-8 md:border-none md:bg-transparent">
           {ROUTES.map((route, i) => {
             return (
               <li
@@ -41,7 +43,7 @@ export default function Nav({ sidebarSetter }) {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
       </div>
 
       {/* Cart button */}

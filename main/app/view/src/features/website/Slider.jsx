@@ -1,12 +1,16 @@
 import { useState } from "react"
 
+import img1 from '../../../public/assets/bus.png'
+import img2 from '../../../public/assets/man.png'
+import img3 from '../../../public/assets/taxi.png'
+
 export default function Slider() {
   const [activeImg, setActiveImg] = useState(1)
 
   const images = [
-    { id: 1, src: "/assets/bus.png", alt: "Bus" },
-    { id: 2, src: "/assets/man.png", alt: "Man" },
-    { id: 3, src: "/assets/taxi.png", alt: "Taxi" },
+    { id: 1, src: img1, alt: "Bus" },
+    { id: 2, src: img2, alt: "Man" },
+    { id: 3, src: img3, alt: "Taxi" },
   ]
 
   const handleRadioChange = (e) => {
