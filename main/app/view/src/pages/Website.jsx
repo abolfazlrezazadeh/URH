@@ -6,10 +6,10 @@ import Slider from "../features/website/Slider"
 import Footer from "../features/website/Footer"
 
 // images
-import myImage from '../../dist/assets/map.png'
-import myHand from '../../dist/assets/hand.png'
-import myPhone from '../../dist/assets/phone.png'
-import myApp from '../../dist/assets/app.png'
+import myImage from "/assets/map.png"
+import myHand from "/assets/hand.png"
+import myPhone from "/assets/phone.png"
+import myApp from "/assets/app.png"
 
 export default function Website() {
   return (
@@ -69,6 +69,8 @@ export default function Website() {
       <ImageSection>
         <Slider />
         <img src={myApp} alt="app" className="blocl mx-auto mb-5" />
+          <h1 className="text-2xl">زمان سوختتو طلایی کن </h1>
+          <p className="">پادکست های علمی و مذهبی، کلید توسعه<br /> فردی در سفرهای هوشمند!</p>
       </ImageSection>
       <Footer />
     </div>
