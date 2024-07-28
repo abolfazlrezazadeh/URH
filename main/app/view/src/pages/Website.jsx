@@ -6,10 +6,10 @@ import Slider from "../features/website/Slider"
 import Footer from "../features/website/Footer"
 
 // images
-import myImage from '../../dist/assets/map.png'
-import myHand from '../../dist/assets/hand.png'
-import myPhone from '../../dist/assets/phone.png'
-import myApp from '../../dist/assets/app.png'
+import myImage from '../../build/assets/map.png'
+import myHand from '../../build/assets/hand.png'
+import myPhone from '../../build/assets/phone.png'
+import myApp from '../../build/assets/app.png'
 
 export default function Website() {
   return (

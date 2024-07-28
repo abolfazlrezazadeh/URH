@@ -1,9 +1,9 @@
 import { MdPayment } from "react-icons/md"
 import { FaRegUser } from "react-icons/fa"
 
-import taxiIcon from "../../public/icons/taxi.svg"
-import podcastIcon from "../../public/icons/podcast.svg"
-import busIcon from "../../public/icons/bus.svg"
+import taxiIcon from "../../build/icons/taxi.svg"
+import podcastIcon from "../../build/icons/podcast.svg"
+import busIcon from "../../build/icons/bus.svg"
 
 
 import { NavLink } from "react-router-dom"
