@@ -1,13 +1,15 @@
 import NavBar from "../components/NavBar"
-import elmi1 from "../assets/podcast/elmi1.png"
-import elmi2 from "../assets/podcast/elmi2.png"
-import elmi3 from "../assets/podcast/elmi3.png"
-import mzhbi1 from "../assets/podcast/mzhbi1.png"
-import mzhbi2 from "../assets/podcast/mzhbi2.png"
-import mzhbi3 from "../assets/podcast/mzhbi3.png"
-import s1 from "../assets/podcast/s1.png"
-import s2 from "../assets/podcast/s2.png"
-import s3 from "../assets/podcast/s3.png"
+
+//images 
+import elmi1  from "../../public/assets/podcast/elmi1.png"
+import elmi2  from "../../public/assets/podcast/elmi2.png"
+import elmi3  from "../../public/assets/podcast/elmi3.png"
+import mzhbi1 from "../../public/assets/podcast/mzhbi1.png"
+import mzhbi2 from "../../public/assets/podcast/mzhbi2.png"
+import mzhbi3 from "../../public/assets/podcast/mzhbi3.png"
+import s1     from "../../public/assets/podcast/s1.png"
+import s2     from "../../public/assets/podcast/s2.png"
+import s3     from "../../public/assets/podcast/s3.png"
 
 export default function Podcast() {
   return (
