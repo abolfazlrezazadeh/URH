@@ -4,7 +4,7 @@ import { AiOutlineSetting } from "react-icons/ai"
 import { FaUserFriends } from "react-icons/fa"
 import { GoLocation } from "react-icons/go"
 import { CiRoute } from "react-icons/ci"
-import userImg from "../../public/assets/user.png"
+import userImg from "../../build/assets/user.png"
 import InfoCard from "../components/InfoCard"
 
 import { Link, useNavigate }from "react-router-dom"

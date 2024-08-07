@@ -1,7 +1,7 @@
 import Card from "../components/Card"
 import GoBackBtn from "../components/GoBackBtn"
 import NavBar from "../components/NavBar"
-import userImg from "../../public/assets/user.png"
+import userImg from "../../build/assets/user.png"
 
 export default function UserProfile() {
   return (

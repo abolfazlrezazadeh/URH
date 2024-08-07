@@ -1,7 +1,7 @@
 import GoBackBtn from "../components/GoBackBtn"
 import NavBar from "../components/NavBar"
 
-import inviteImg from "../../public/assets/invite-bg.jpg"
+import inviteImg from "../../build/assets/invite-bg.jpg"
 
 export default function Invite() {
   return (

@@ -1,7 +1,7 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 
-import Logo from "../../../public/assets/logo.png"
+import Logo from "../../../build/assets/logo.png"
 
 // const ROUTES = ["Home", "About", "Services", "Pricing", "Contact"];
 export default function Nav({ sidebarSetter }) {

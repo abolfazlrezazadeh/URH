@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-import img1 from '../../../public/assets/bus.png'
-import img2 from '../../../public/assets/man.png'
-import img3 from '../../../public/assets/taxi.png'
+import img1 from '../../../build/assets/bus.png'
+import img2 from '../../../build/assets/man.png'
+import img3 from '../../../build/assets/taxi.png'
 
 export default function Slider() {
   const [activeImg, setActiveImg] = useState(1)
