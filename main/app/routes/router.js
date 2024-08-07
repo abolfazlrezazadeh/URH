@@ -9,7 +9,7 @@ const router = require("express").Router()
 
 router.use('/user' , userValidationRoutes);
 router.use('/user-profile' , verifyAccessTokken , userRoutes);
-router.use('/wallet' , verifyAccessTokken , walletRouter);
+router.use('/wallet' , walletRouter);
 router.use('/' ,/*verifyAccessTokken ,*/ homeRouter);
 
 

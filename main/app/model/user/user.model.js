@@ -33,11 +33,11 @@ const userSchema = new mongoose.Schema(
         expiresIn: 0,
       },
     },
-    cardNumber: { type: String },
+    cardNumber: { type: String ,default:""},
     role: { type: String, default: "USER" },
     favoriteRoutes: [routeSchema], // Embed the RouteSchema for favorite routes
     favoritePlaces: [placeSchema], // Embed the PlaceSchema for favorite places
-    wallet: walletSchema, // Include the WalletSchema for the wallet field
+    wallet: {type : walletSchema, default: {} }, // Include the WalletSchema for the wallet field
   },
   {
     timestamps: true,
