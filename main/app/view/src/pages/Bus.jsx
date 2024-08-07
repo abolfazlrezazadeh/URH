@@ -1,65 +1,101 @@
-import { useMemo } from "react"
-import Map, { GeolocateControl, Marker } from "react-map-gl"
-import NavBar from "../components/NavBar"
-import "mapbox-gl/dist/mapbox-gl.css"
-import "./Bus.css"
-import Pin from "../Pin"
+import { useEffect, useMemo, useRef, useState } from "react";
+import Map, { GeolocateControl, Marker, Source, Layer } from "react-map-gl";
+import NavBar from "../components/NavBar";
+import "mapbox-gl/dist/mapbox-gl.css";
+import "./Bus.css";
+import Pin from "../Pin";
 
-import busStops from '../BusStops.json'
+import busStops from "../BusStops.json";
 
-const mapIrToken =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjRjODY0MzAxNzFkYjQyNTk0ZThjNmY4Y2FkNDRiMmY3MDE3M2U4YzE5YTY2YTM2YzU1NTkxMjBhNGIyYmVlOWJiNzk2MzllNGVjMjZjNGVmIn0.eyJhdWQiOiIyNzk5MCIsImp0aSI6IjRjODY0MzAxNzFkYjQyNTk0ZThjNmY4Y2FkNDRiMmY3MDE3M2U4YzE5YTY2YTM2YzU1NTkxMjBhNGIyYmVlOWJiNzk2MzllNGVjMjZjNGVmIiwiaWF0IjoxNzIwMzQzOTkzLCJuYmYiOjE3MjAzNDM5OTMsImV4cCI6MTcyMjkzNTk5Mywic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.Fa3cJOu9qUPCSHBoWb5Tu42qAZkUjKwndI_-wH6rWa0NUFL8nnMxofoEn_S8KsNl0S5nlyXGleSBXhiSYxQajwHlFSgYZThTsjoC4x55rJMINZao6JN_d3jfRT720LInBso6Kq9Lp745QMo4CpLJkoBJDa3TBk7MxwChVNZh1rCEXr0CjHFJ1O43ROk5fM5cgOmdd2LHIczXM6U-4SM5rRJeAz5ubH17yd-_m5r9ZaK_w7DeAq_cYiv6xmtGkRyUG_oXxfwIAhbP9LjEUR0Buay8BHlriyxBumIuK298dx3IHKRdjXtxiCH9nHupGcZdWuFHsXBj2Wla80GmozK_3Q"
+// Replace with your Mapbox access token
+const mapboxAccessToken = "YOUR_MAPBOX_ACCESS_TOKEN";
 
+const Bus = () => {
+  const [latANDlng, setLatANDlng] = useState([]);
+  const [route, setRoute] = useState(null);
+  const mapRef = useRef(null);
 
-const App = () => {
+  let counter = 1;
 
-   const pins = useMemo(
-     () =>
-       busStops.map((city, index) => (
-         <Marker
-           key={`marker-${index}`}
-           longitude={city.longitude}
-           latitude={city.latitude}
-           anchor="bottom"
-           onClick={(e) => {
-             // If we let the click event propagates to the map, it will immediately close the popup
-             // with `closeOnClick: true`
-             e.originalEvent.stopPropagation()
-           }}
-         >
-           <Pin />
-         </Marker>
-       )),
-     [],
-   )
+  const pins = useMemo(
+    () =>
+      busStops.map((city, index) => (
+        <Marker
+          key={`marker-${index}`}
+          longitude={city.longitude}
+          latitude={city.latitude}
+          anchor="bottom"
+          onClick={(e) => {
+            if (counter === 1) {
+              setLatANDlng([city]);
+              counter++;
+            } else {
+              setLatANDlng((x) => {
+                counter--;
+                return [...x, city];
+              });
+            }
+            e.originalEvent.stopPropagation();
+          }}
+        >
+          <Pin />
+        </Marker>
+      )),
+    []
+  );
+
+  useEffect(() => {
+    if (latANDlng.length === 2) {
+      const fetchRoute = async () => {
+        const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${latANDlng[0].longitude},${latANDlng[0].latitude};${latANDlng[1].longitude},${latANDlng[1].latitude}?geometries=geojson&access_token=${mapboxAccessToken}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.routes && data.routes.length > 0) {
+          setRoute(data.routes[0].geometry);
+        }
+      };
+      fetchRoute();
+    }
+  }, [latANDlng]);
 
   return (
-    <div>
+    <>
       <NavBar />
       <Map
+        ref={mapRef}
         initialViewState={{
           longitude: 45.0732025,
           latitude: 37.550639,
           zoom: 15,
         }}
         style={{ width: "100%", height: "100dvh" }}
-        // choose your style from https://help.map.ir/documentation/styles/
         mapStyle="https://map.ir/vector/styles/main/mapir-Dove-style.json"
-        // send your api key along with every request to map.ir (get your api key here: https://corp.map.ir/registration)
         transformRequest={(url) => {
           return {
             url,
             headers: {
-              "x-api-key": mapIrToken, //Mapir api key
+              "x-api-key": mapboxAccessToken, // Replace this line if using Mapbox style
             },
-          }
+          };
         }}
       >
         <GeolocateControl position="top-left" />
         {pins}
+        {route && (
+          <Source id="route" type="geojson" data={route}>
+            <Layer
+              id="route-line"
+              type="line"
+              paint={{
+                "line-color": "#888",
+                "line-width": 6,
+              }}
+            />
+          </Source>
+        )}
       </Map>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default App
+export default Bus;

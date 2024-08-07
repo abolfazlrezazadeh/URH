@@ -39,6 +39,7 @@ export default function NFCReader() {
 
   const handleScan = () => {
     if (!reading) {
+      // eslint-disable-next-line no-undef
       ndef
         .scan()
         .then(() => {
@@ -52,6 +53,7 @@ export default function NFCReader() {
         })
     } else {
       // Stop scanning
+      // eslint-disable-next-line no-undef
       ndef.stop()
       setReading(false)
       setTagData(null)
