@@ -14,6 +14,7 @@ import Taxi from "./pages/Taxi"
 import Payment from "./pages/Payment"
 
 import Nfc from "./pages/Nfc"
+import Ndef from "./pages/Ndef"
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           </Route>
 
           <Route path="nfc" element={<Nfc />} />
+          <Route path="ndef" element={<Ndef />} />
 
           <Route path="*" element={<GoBackBtn />} />
         </Routes>
