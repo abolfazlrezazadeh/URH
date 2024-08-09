@@ -15,6 +15,7 @@ import Payment from "./pages/Payment"
 
 import Nfc from "./pages/Nfc"
 import Ndef from "./pages/Ndef"
+import NfcR from "./pages/NfcR"
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
 
           <Route path="nfc" element={<Nfc />} />
           <Route path="ndef" element={<Ndef />} />
+          <Route path="nfcr" element={<NfcR />} />
 
           <Route path="*" element={<GoBackBtn />} />
         </Routes>

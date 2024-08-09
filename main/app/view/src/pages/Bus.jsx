@@ -1,22 +1,20 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import Map, { GeolocateControl, Marker, Source, Layer } from "react-map-gl";
-import NavBar from "../components/NavBar";
-import "mapbox-gl/dist/mapbox-gl.css";
-import "./Bus.css";
-import Pin from "../Pin";
+import { useEffect, useMemo, useRef, useState } from "react"
+import Map, { GeolocateControl, Marker, Source, Layer } from "react-map-gl"
+import NavBar from "../components/NavBar"
+import "mapbox-gl/dist/mapbox-gl.css"
+import "./Bus.css"
+import Pin from "../Pin"
+import busStops from "../BusStops.json"
 
-import busStops from "../BusStops.json";
-
-// Replace with your Mapbox access token
-const mapboxAccessToken = "YOUR_MAPBOX_ACCESS_TOKEN";
+const mapIrToken = "YOUR_MAPIR_TOKEN" // Replace with your actual Map.ir token
 
 const Bus = () => {
-  const [latANDlng, setLatANDlng] = useState([]);
-  const [route, setRoute] = useState(null);
-  const mapRef = useRef(null);
+  const [latANDlng, setLatANDlng] = useState([])
+  const [route, setRoute] = useState(null)
+  const [counter, setCounter] = useState(1)
+  const mapRef = useRef(null)
 
-  let counter = 1;
-
+  // Memoize the pins to avoid unnecessary re-renders
   const pins = useMemo(
     () =>
       busStops.map((city, index) => (
@@ -26,40 +24,48 @@ const Bus = () => {
           latitude={city.latitude}
           anchor="bottom"
           onClick={(e) => {
+            e.originalEvent.stopPropagation()
             if (counter === 1) {
-              setLatANDlng([city]);
-              counter++;
+              setLatANDlng([city])
+              setCounter(2)
             } else {
-              setLatANDlng((x) => {
-                counter--;
-                return [...x, city];
-              });
+              setLatANDlng((prev) => {
+                setCounter(1)
+                return [...prev, city]
+              })
             }
-            e.originalEvent.stopPropagation();
           }}
         >
           <Pin />
         </Marker>
       )),
-    []
-  );
+    [counter],
+  )
 
+  // Fetch route data when two stops are selected
   useEffect(() => {
     if (latANDlng.length === 2) {
       const fetchRoute = async () => {
-        const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${latANDlng[0].longitude},${latANDlng[0].latitude};${latANDlng[1].longitude},${latANDlng[1].latitude}?geometries=geojson&access_token=${mapboxAccessToken}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data.routes && data.routes.length > 0) {
-          setRoute(data.routes[0].geometry);
+        try {
+          // const url = `https://api.map.ir/v1/directions?origin=${latANDlng[0].longitude},${latANDlng[0].latitude}&destination=${latANDlng[1].longitude},${latANDlng[1].latitude}&key=${mapIrToken}`
+          const url = `/api/v1/directions?origin=${latANDlng[0].longitude},${latANDlng[0].latitude}&destination=${latANDlng[1].longitude},${latANDlng[1].latitude}&key=${mapIrToken}`
+
+          const response = await fetch(url)
+          if (!response.ok) throw new Error("Network response was not ok")
+          const data = await response.json()
+          if (data.routes && data.routes.length > 0) {
+            setRoute(data.routes[0].geometry)
+          }
+        } catch (error) {
+          console.error("Error fetching route:", error)
         }
-      };
-      fetchRoute();
+      }
+      fetchRoute()
     }
-  }, [latANDlng]);
+  }, [latANDlng])
 
   return (
-    <>
+    <div>
       <NavBar />
       <Map
         ref={mapRef}
@@ -74,15 +80,19 @@ const Bus = () => {
           return {
             url,
             headers: {
-              "x-api-key": mapboxAccessToken, // Replace this line if using Mapbox style
+              "x-api-key": mapIrToken,
             },
-          };
+          }
         }}
       >
         <GeolocateControl position="top-left" />
         {pins}
         {route && (
-          <Source id="route" type="geojson" data={route}>
+          <Source
+            id="route"
+            type="geojson"
+            data={{ type: "Feature", geometry: route }}
+          >
             <Layer
               id="route-line"
               type="line"
@@ -94,8 +104,8 @@ const Bus = () => {
           </Source>
         )}
       </Map>
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default Bus;
+export default Bus

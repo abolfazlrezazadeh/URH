@@ -47,5 +47,3 @@ export default function Taxi() {
     </>
   )
 }
-// Udemy_Next.js_Projects_4_NextJS_13_projects_Instagram_Google_2023_2.part1_Downloadly.ir
-// Udemy_Next.js_Projects_4_NextJS_13_projects_Instagram_Google_2023_2.part2_Downloadly.ir
