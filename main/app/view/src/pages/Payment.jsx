@@ -72,7 +72,7 @@ export default function Payment() {
           <div id="reader"></div>
         )
       ) : (
-        <Link to='/nfc'>Go to nfc tab</Link>
+        <Link to='/ndef'>Go to nfc tab</Link>
       )}
     </>
   )
