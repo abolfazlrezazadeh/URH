@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
-import {useNavigate} from 'react-router-dom'
-import {
-  sendOtp,
-  updatePhoneNumber,
-} from "../features/user/userSlice"
+import { useNavigate } from "react-router-dom"
+import { sendOtp, updatePhoneNumber } from "../features/user/userSlice"
 import Confirm from "../features/user/Confirm"
 import { useEffect } from "react"
 import NavBar from "../components/NavBar"
@@ -15,6 +12,7 @@ export default function SignUp() {
   const phoneNumber = useSelector((store) => store.user.user.phoneNumber)
   const smsSendingLoading = useSelector((store) => store.user.smsSendingLoading)
   const jwtCode = useSelector((store) => store.user.user.jwtToken)
+  const loginErr = useSelector((store) => store.user.user.errorMsg)
 
   const handlePhoneNumberChange = (e) => {
     let value = e.target.value
@@ -32,16 +30,18 @@ export default function SignUp() {
   }
 
   useEffect(() => {
-    if (jwtCode) {
-      console.log('we have jwt code')
-      navigate('/bus')
+    if (jwtCode.length > 10) {
+      console.log("we have jwt code")
+      navigate("/bus")
     }
-  }, [jwtCode])
+  }, [jwtCode, navigate])
+
+  useEffect(() => {
+    if (loginErr) alert(loginErr)
+  }, [loginErr])
 
   if (haveSms) {
-    return (
-      <Confirm />
-    )
+    return <Confirm />
   }
 
   return (

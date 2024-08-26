@@ -31,7 +31,7 @@ export const initialState = {
     user: {
         phoneNumber: null,
         smsCode: null,
-        jwtToken: null,
+        jwtToken: '',
         refreshToken: null
     },
     failSmsSend: false,
@@ -50,7 +50,7 @@ export const userSlice = createSlice({
         updateUserSms: (state, action) => {
             state.user.smsCode = action.payload
         },
-        
+
     },
     extraReducers: (builder) => {
         builder.addCase(sendOtp.pending, (state) => {
@@ -67,6 +67,7 @@ export const userSlice = createSlice({
             console.log(action.payload)
             state.user.jwtToken = action?.payload
             state.user.refreshToken = action?.payload?.refreshToken
+            state.user.errorMsg = action?.payload?.errors?.message
         })
         builder.addCase(checkOtp.pending, (state, action) => {
             // console.log(action.payload)

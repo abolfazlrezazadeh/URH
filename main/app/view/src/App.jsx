@@ -16,6 +16,7 @@ import Payment from "./pages/Payment"
 import Nfc from "./pages/Nfc"
 import Ndef from "./pages/Ndef"
 import NfcR from "./pages/NfcR"
+import SignUp from "./pages/SignUp"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Website />} />
+          <Route path="sign-up" element={<SignUp />} />
 
           <Route path="bus" element={<Bus />} />
           <Route path="taxi" element={<Taxi />} />
