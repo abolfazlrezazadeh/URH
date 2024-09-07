@@ -1,5 +1,6 @@
 const { StatusCodes: httpStatus } = require("http-status-codes");
 const controller = require("../../main.controller");
+const axios = require("axios");
 const {
   getOtpSchema,
   checkOtpSchema,
@@ -25,6 +26,7 @@ class authController extends controller {
           "وورود موفقیت آمیز نبود ، لطفا مجددا تلاش کنید "
         );
       }
+      await this.sendOTP(code,phone)
       return res.status(httpStatus.OK).json({
         statusCode: httpStatus.OK,
         data: {
@@ -110,6 +112,15 @@ class authController extends controller {
     );
     //if updated return true
     return !!updateResult.modifiedCount;
+  }
+  async sendOTP(code, phone) {
+    try {
+      const response = await axios.get(`https://api.kavenegar.com/v1/${process.env.SMS_TOKEN}/verify/lookup.json?receptor=${phone}&token=${code}&template=OtpVerrify`);
+      
+      return console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 

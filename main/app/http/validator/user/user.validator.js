@@ -1,7 +1,7 @@
 const joi = require("@hapi/joi");
 const createHttpError = require("http-errors");
 const getOtpSchema = joi.object({
-    phone : joi.string().length(11).pattern(/^09[0-9]{9}$/).error(createHttpError[401]("شماره موبایل صحیح نمی باشد"))
+    phone : joi.string().length(11).pattern(/^09[0-9]{9}$/).error(new createHttpError[401]("شماره موبایل صحیح نمی باشد"))
 });
 const checkOtpSchema = joi.object({
     phone : joi.string().length(11).pattern(/^09[0-9]{9}$/).error(createHttpError[401]("phone number must be 9 characters")),

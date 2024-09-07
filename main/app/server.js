@@ -26,6 +26,8 @@ module.exports = class Application {
   }
   configApplication() {
     this.#app.use(cors());
+    // convert body to string
+    this.#app.use(express.json({ limit: "50mb" }));
     //morgan is logging every requests
     //dev == in developing status
     this.#app.use(morgan("dev"));
