@@ -9,6 +9,7 @@ class walletcontroller extends controller {
       console.log(id);
       const user = await userModel.findById(id);
       return res.status(200).json({
+        statusCode : 200,
         balance : user.wallet.balance
       })
     } catch (error) {
@@ -27,14 +28,13 @@ class walletcontroller extends controller {
       const { TAG, PRICE } = parsedBody; 
       console.log("this is parsed PRICE",PRICE);
       
-      
-      
       if (typeof PRICE !== "number") return res.json({ message: "price must be number" });
       const findUser = await userModel.findOne({cardNumber:TAG})
 
       if(!findUser) return res.json({message:"user not found"})
       const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':PRICE}},{new:true});
       return res.json({
+        statusCode : 200,
         userBalance : user.wallet.balance
       })
     } catch (error) {
@@ -63,6 +63,7 @@ class walletcontroller extends controller {
 
       const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':-PRICE}},{new:true});
       return res.json({
+        statusCode : 200,
         userBalance : user.wallet.balance
       })
     } catch (error) {
