@@ -18,19 +18,22 @@ class walletcontroller extends controller {
   async increaseWalletBalance(req, res, next) {
     try {
       // const id = req.user._id.toString();
-      console.log(req.body);
-      
+      console.log("this is not parsed body",req.body);
       const input = req.body;
+      
       const stringBody = JSON.stringify(input);
-      console.log(stringBody);
+      const parsedBody = JSON.parse(stringBody); // Parse the JSON string back into an object
+      console.log("this is parsed body",parsedBody);
+      const { TAG, PRICE } = parsedBody; 
+      console.log("this is parsed PRICE",PRICE);
       
-      const {cardNumber,price} = stringBody;
       
-      if(typeof(price) !== "number" || +price !== "number") return res.json({message : "price must be number"})
-      const findUser = await userModel.findOne({cardNumber})
+      
+      if (typeof PRICE !== "number") return res.json({ message: "price must be number" });
+      const findUser = await userModel.findOne({cardNumber:TAG})
 
       if(!findUser) return res.json({message:"user not found"})
-      const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':price}},{new:true});
+      const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':PRICE}},{new:true});
       return res.json({
         userBalance : user.wallet.balance
       })
@@ -41,15 +44,24 @@ class walletcontroller extends controller {
   async decreaseWalletBalance(req, res, next) {
     try {
       // const id = req.user._id.toString();
-      const {cardNumber,price} = req.body;
-      console.log(req.body);
+      console.log("this is not parsed body",req.body);
+      const input = req.body;
       
-      if(typeof(price) !== "number") return res.json({message : "قیمت وورودی باید عدد باشد"})
-      const findUser = await userModel.findOne({cardNumber})
-    if(!findUser) return res.json({message:"user not found"})
-    if(findUser.wallet.balance < price) throw createHttpError.BadRequest("موجودی کافی نمیباشد  ")
+      const stringBody = JSON.stringify(input);
+      const parsedBody = JSON.parse(stringBody); // Parse the JSON string back into an object
+      console.log("this is parsed body",parsedBody);
+      const { TAG, PRICE } = parsedBody; 
+      console.log("this is parsed PRICE",PRICE);
+      
+      
+      
+      if (typeof PRICE !== "number") return res.json({ message: "price must be number" });
+      const findUser = await userModel.findOne({cardNumber:TAG})
 
-      const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':-price}},{new:true});
+      if(!findUser) return res.json({message:"user not found"})
+    if(findUser.wallet.balance < PRICE) throw createHttpError.BadRequest("موجودی کافی نمیباشد  ")
+
+      const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':-PRICE}},{new:true});
       return res.json({
         userBalance : user.wallet.balance
       })
