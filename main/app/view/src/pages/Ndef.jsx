@@ -38,20 +38,11 @@ export default function Ndef() {
   async function payTheFare() {
     try {
       const writer = new NDEFReader()
-      await writer.write({
-        records: [
-          {
-            recordType: "text",
-            data: '4c:18:62:d2',
-            encoding: "utf-8", // Use proper encoding depending on your data
-          },
-        ],
-      })
+      await writer.write("4c:18:62:d2")
       setFeed(`اتمام پرداخت`)
     } catch (error) {
       setFeed("ارور هنگام پرداخت")
     }
-
   }
 
   return (
