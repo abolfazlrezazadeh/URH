@@ -5,8 +5,7 @@ class walletcontroller extends controller {
   async getWalletBalance(req, res, next) {
     try {
       // const id = req.user._id.toString();
-      const id = "664dade45aa19d535320c3c8"
-      console.log(id);
+      const id = "67f2b3b195c9435ad063d02a"
       const user = await userModel.findById(id);
       return res.status(200).json({
         statusCode : 200,
