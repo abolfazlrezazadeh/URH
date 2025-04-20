@@ -113,21 +113,21 @@ class authController extends controller {
     //if updated return true
     return !!updateResult.modifiedCount
   }
-  async sendOTP (code, phone) {
+  async sendOTP(code, phone) {
     try {
-      var Kavenegar = require('kavenegar')
-      var api = Kavenegar.KavenegarApi({
-        apikey:
-          '6559654B776F6E6F5545507743346E557942492F6A4E6A68365748616B3133655A4165712F49394D4D686F3D'
-      })
-      api.Send({
-        message: code,
-        sender: '2000660110',
-        receptor: phone
-      })
-      return console.log(response)
-    } catch (error) {
-      console.error(error)
+      const { data } = await axios.post('http://ippanel.com/api/select', {
+        op: "pattern",
+        user: "09143893359",
+        pass: "AliReza123456!@#$$#@!",
+        fromNum: "3000505",
+        toNum: phone,
+        patternCode: "jdfpr64pu73jgbi",
+        inputData: [{ "verification-code": code }]
+      });
+      
+      return data;
+    } catch (err) {
+      throw new Error("خطا در اتصال به سامانه پیامکی");
     }
   }
 }
