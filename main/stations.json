@@ -1,0 +1,123 @@
+{
+    "stations": [
+      {
+        "from": {
+          "name": "مرکز",
+          "coordinates": {
+            "latitude": 37.5525325,
+            "longitude": 45.0755545
+          }
+        },
+        "destinations": [
+          {
+            "to": "ایالت",
+            "price": 15000,
+            "coordinates": {
+              "latitude": 37.5441350,
+              "longitude": 45.0649822
+            }
+          },
+          {
+            "to": "ترمینال",
+            "price": 12000,
+            "coordinates": {
+              "latitude": 37.5630303,
+              "longitude": 45.1019226
+            }
+          },
+          {
+            "to": "دروازه مهاباد",
+            "price": 18000,
+            "coordinates": {
+              "latitude": 37.5504866,
+              "longitude": 45.0852681
+            }
+          }
+        ]
+      },
+      {
+        "from": {
+          "name": "ایالت",
+          "coordinates": {
+            "latitude": 37.5441204,
+            "longitude": 45.0650074
+          }
+        },
+        "destinations": [
+          {
+            "to": "مرکز",
+            "price": 15000,
+            "coordinates": {
+              "latitude": 37.5525317,
+              "longitude": 45.0755883
+            }
+          },
+          {
+            "to": "مدرس",
+            "price": 10000,
+            "coordinates": {
+              "latitude": 37.5517431,
+              "longitude": 45.0561145
+            }
+          }
+        ]
+      },
+      {
+        "from": {
+          "name": "کاشانی",
+          "coordinates": {
+            "latitude": 37.5436347,
+            "longitude": 45.0649091
+          }
+        },
+        "destinations": [
+          {
+            "to": "چهار راه دانشکده",
+            "price": 8000,
+            "coordinates": {
+              "latitude": 37.5372774,
+              "longitude": 45.0725786
+            }
+          }
+        ]
+      },
+      {
+        "from": {
+          "name": "مدرس",
+          "coordinates": {
+            "latitude": 37.5561062,
+            "longitude": 45.0499266
+          }
+        },
+        "destinations": [
+          {
+            "to": "ایالت",
+            "price": 10000,
+            "coordinates": {
+              "latitude": 37.5440914,
+              "longitude": 45.0644407
+            }
+          }
+        ]
+      },
+      {
+        "from": {
+          "name": "ترمینال",
+          "coordinates": {
+            "latitude": 37.5633016,
+            "longitude": 45.1010549
+          }
+        },
+        "destinations": [
+          {
+            "to": "مرکز",
+            "price": 12000,
+            "coordinates": {
+              "latitude": 37.5533958,
+              "longitude": 45.0765006
+            }
+          }
+        ]
+      }
+    ]
+  }
