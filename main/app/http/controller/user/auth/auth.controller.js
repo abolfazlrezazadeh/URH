@@ -115,15 +115,20 @@ class authController extends controller {
   }
   async sendOTP(code, phone) {
     try {
-      const { data } = await axios.post('http://ippanel.com/api/select', {
-        op: "pattern",
-        user: "09143893359",
-        pass: "AliReza123456!@#$$#@!",
-        fromNum: "3000505",
-        toNum: phone,
-        patternCode: "jdfpr64pu73jgbi",
-        inputData: [{ "verification-code": code }]
-      });
+      const formData = new URLSearchParams();
+      formData.append('template', process.env.SMS_TEMPLATE);
+      formData.append('receptor', phone);
+      formData.append('token', code);
+      
+      const { data } = await axios.post(
+        `https://api.kavenegar.com/v1/${process.env.SMS_TOKEN}/verify/lookup.json`,
+        formData.toString(),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
       
       return data;
     } catch (err) {

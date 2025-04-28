@@ -51,4 +51,5 @@ const userSchema = new mongoose.Schema(
 module.exports = {
   // Export the User model and create a model based on the userSchema
   userModel: mongoose.model("user",userSchema),
+  walletSchema
 };
