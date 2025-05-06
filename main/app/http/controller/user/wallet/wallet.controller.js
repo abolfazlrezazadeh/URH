@@ -17,19 +17,12 @@ class walletcontroller extends controller {
   }
   async increaseWalletBalance(req, res, next) {
     try {
-      // const id = req.user._id.toString();
-      console.log("this is not parsed body",req.body);
       const input = req.body;
-      
       const stringBody = JSON.stringify(input);
-      const parsedBody = JSON.parse(stringBody); // Parse the JSON string back into an object
-      console.log("this is parsed body",parsedBody);
+      const parsedBody = JSON.parse(stringBody);
       const { TAG, PRICE } = parsedBody; 
-      console.log("this is parsed PRICE",PRICE);
-      
       if (typeof PRICE !== "number") return res.json({ message: "price must be number" });
       const findUser = await userModel.findOne({cardNumber:TAG})
-
       if(!findUser) return res.json({message:"user not found"})
       const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':PRICE}},{new:true});
       return res.json({
@@ -50,16 +43,10 @@ class walletcontroller extends controller {
       const parsedBody = JSON.parse(stringBody); // Parse the JSON string back into an object
       console.log("this is parsed body",parsedBody);
       const { TAG, PRICE } = parsedBody; 
-      console.log("this is parsed PRICE",PRICE);
-      
-      
-      
       if (typeof PRICE !== "number") return res.json({ message: "price must be number" });
       const findUser = await userModel.findOne({cardNumber:TAG})
-
       if(!findUser) return res.json({message:"user not found"})
     if(findUser.wallet.balance < PRICE) throw createHttpError.BadRequest("موجودی کافی نمیباشد  ")
-
       const user = await userModel.findByIdAndUpdate(findUser._id,{$inc:{'wallet.balance':-PRICE}},{new:true});
       return res.json({
         statusCode : 200,

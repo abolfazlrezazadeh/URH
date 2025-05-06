@@ -9,9 +9,9 @@ const {
 
 function randomNumberGenerator() {
   let digits;
-  digits = String(Math.floor(10_000 + Math.random() * 90_000));
+  digits = String(Math.floor(1000 + Math.random() * 9_000));
   if (digits.length != 5)
-    digits = String(Math.floor(10_000 + Math.random() * 90_000));
+    digits = String(Math.floor(1_000 + Math.random() * 9_000));
   return digits;
 }
 async function signAccessToken(userId) {

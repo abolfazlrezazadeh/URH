@@ -116,12 +116,14 @@ class authController extends controller {
   async sendOTP(code, phone) {
     try {
       const formData = new URLSearchParams();
-      formData.append('template', process.env.SMS_TEMPLATE);
+      formData.append('template', "urh-otp");
       formData.append('receptor', phone);
       formData.append('token', code);
+      console.log(formData);
+      console.log(`https://api.kavenegar.com/v1/${process.env.SMS_TOKEN}/verify/lookup.json`);
       
       const { data } = await axios.post(
-        `https://api.kavenegar.com/v1/${process.env.SMS_TOKEN}/verify/lookup.json`,
+        `https://api.kavenegar.com/v1/364B7670444D596A51456F64704350736C645231483470444C534B764F66354D41503038425143445843343D/verify/lookup.json`,
         formData.toString(),
         {
           headers: {
@@ -129,9 +131,10 @@ class authController extends controller {
           },
         }
       );
-      
       return data;
     } catch (err) {
+      console.log(err);
+      
       throw new Error("خطا در اتصال به سامانه پیامکی");
     }
   }

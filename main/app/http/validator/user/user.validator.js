@@ -13,9 +13,13 @@ const checkOtpSchema = joi.object({
 //     email : joi.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
 // })
 
-
+const updateUserProfile = joi.object({
+    name:joi.string().required(),
+    phone : joi.string().length(11).pattern(/^09[0-9]{9}$/).error(createHttpError[401]("phone number must be 9 characters")),
+})
 module.exports = {
     // checkUserInformation,
     getOtpSchema,
+    updateUserProfile,
     checkOtpSchema
 }

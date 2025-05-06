@@ -18,6 +18,7 @@ async function verifyAccessTokken(req, res, next) {
           throw createError.Unauthorized("لطفا وارد حساب کاربری خود شوید");
         const { userId } = payload || {};
         const user = await userModel.findOne({ _id: userId }, { phone: 0 });
+        
         if (!user) throw createError.Unauthorized("حساب کاربری یافت نشد");
         req.user = user;
         return next();

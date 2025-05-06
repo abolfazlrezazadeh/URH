@@ -4,7 +4,9 @@ const {
 
 const router = require("express").Router();
 
-router.post("/", userController.updateUser);
+router.put("/", userController.updateUser);
+
+router.get("/",userController.getUserProfile)
 
 module.exports = {
   userRoutes: router,
